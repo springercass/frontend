@@ -6,7 +6,7 @@ import palette from '../navImages/palette.png';
 
 function Nav () {
     return(
-        <Container style={navStyle}> {/*add 'fluid' to make so there is no max width (it will grow/shrink to fill its container)*/}
+        <Container fluid style={navStyle}> {/*TODO: set margin to 0 in app.js*/}
         {/* <Icon name='edit' size='big'/> */}
             <Link style={navStyle}>
                 <Image src={palette} height="52.5px" width="52.5px"/>
@@ -27,7 +27,7 @@ const navStyle={
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '0px 30px 0px 17px'
+    padding: '0px 30px 0px 17px',
 }
 
 export default Nav;

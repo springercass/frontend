@@ -7,14 +7,18 @@ import SearchForm from './searchForm';
 
 function NavLoggedIn () {
     return(
-        <Container style={navStyle}> {/*add 'fluid' to make so there is no max width (it will grow/shrink to fill its container)*/}
+        <Container fluid style={navStyle}>
         {/* <Icon name='edit' size='big'/> */}
-            <Link style={navStyle}>
-                <Image src={palette} height="52.5px" width="52.5px"/>
-                <Header as="h4" textAlign="left" style={{maxWidth:"20px", color: "white", margin: "0px"}}>Art Portfolio</Header>
-            </Link>
-            <SearchForm />
-            <Link style={{color: "white", margin: "0px 30px 0px 0px"}}>Log Out</Link>
+            <div>
+                <Link style={navStyle}>
+                    <Image src={palette} height="52.5px" width="52.5px"/>
+                    <Header as="h4" textAlign="left" style={{maxWidth:"20px", color: "white", margin: "0px"}}>Art Portfolio</Header>
+                </Link>
+            </div>
+            <div style={navStyle}>
+                <SearchForm />
+                <Link style={{color: "white", margin: "0px 0px 0px 10px"}}>Log Out</Link>
+            </div>
         </Container>
     )
 }
