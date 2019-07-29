@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { Container, Icon, Image, Header } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import palette from '../navImages/palette.png';
+import SearchForm from './searchForm';
 
-function Nav () {
+function NavLoggedIn () {
     return(
         <Container style={navStyle}> {/*add 'fluid' to make so there is no max width (it will grow/shrink to fill its container)*/}
         {/* <Icon name='edit' size='big'/> */}
@@ -12,9 +13,8 @@ function Nav () {
                 <Image src={palette} height="52.5px" width="52.5px"/>
                 <Header as="h4" textAlign="left" style={{maxWidth:"20px", color: "white", margin: "0px"}}>Art Portfolio</Header>
             </Link>
-            {/* <Link style={{color: "white", margin: "0px 30px 0px 0px"}}>FAQ</Link>
-            <Link style={{color: "white", margin: "0px 30px 0px 0px"}}>About</Link> */}
-            <Link style={{color: "white", margin: "0px 30px 0px 0px"}}>Log In</Link>
+            <SearchForm />
+            <Link style={{color: "white", margin: "0px 30px 0px 0px"}}>Log Out</Link>
         </Container>
     )
 }
@@ -30,4 +30,4 @@ const navStyle={
     padding: '0px 30px 0px 17px'
 }
 
-export default Nav;
+export default NavLoggedIn;
