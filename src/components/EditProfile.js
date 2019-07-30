@@ -69,7 +69,7 @@ const FormLabel = styled.label`
 
 const FormInput = styled.input`
     margin-top: 5px;
-    width: 375px;
+    width: 95%;
     height: 55px;
     border: 2px solid #777798;
     border-radius: 5px;
@@ -81,7 +81,7 @@ const FormInput = styled.input`
 
 const FormBioInput = styled.textarea`
     margin-top: 5px;
-    width: 375px;
+    width: 95%;
     height: 162px;
     border: 2px solid #777798;
     border-radius: 5px;
@@ -101,10 +101,15 @@ const FormButton = styled.button`
     border-radius: 5px;
     box-shadow: 0px 2.5px 5px 0px rgba(184,185,189,1);
     cursor: pointer;
+
+    :hover {
+        color: #5C6AC4;
+        background-color: white;
+        border: 2px solid #5C6AC4;
+    }    
 `
 
 const EditProfile = (props) => {
-    
     
     const [formState, setFormState] = useState({
         name: '',
@@ -120,6 +125,7 @@ const EditProfile = (props) => {
         // input axios put request
     }
     console.log(formState)
+
     return (
         <EditProfileContainer>
             <LeftSection>
@@ -133,58 +139,58 @@ const EditProfile = (props) => {
                 <EditForm onSubmit={submitHandler}>
                 <FormLabel>
                     Name
-                <FormInput 
-                     name="name"
-                     value={formState.name}
-                     onChange={event => {
-                      // hook ensures rest of formStates object remains the same, only changes key value pair after ','
-                     setFormState({ ...formState, name: event.target.value})
-                    }}
-                />
+                    <FormInput 
+                        name="name"
+                        value={formState.name}
+                        onChange={event => {
+                        // hook ensures rest of formStates object remains the same, only changes key value pair after ','
+                        setFormState({ ...formState, name: event.target.value})
+                        }}
+                    />
                 </ FormLabel>
                 <FormLabel>
                     Username
-                <FormInput 
-                     name="username"
-                     value={formState.username}
-                     onChange={event => {
-                      // hook ensures rest of formStates object remains the same, only changes key value pair after ','
-                     setFormState({ ...formState, username: event.target.value})
-                    }}
-                />
+                    <FormInput 
+                        name="username"
+                        value={formState.username}
+                        onChange={event => {
+                        // hook ensures rest of formStates object remains the same, only changes key value pair after ','
+                        setFormState({ ...formState, username: event.target.value})
+                        }}
+                    />
                 </ FormLabel>
                 <FormLabel>
                     Email Address
-                <FormInput 
-                     name="emailAddress"
-                     value={formState.emailAddress}
-                     onChange={event => {
-                      // hook ensures rest of formStates object remains the same, only changes key value pair after ','
-                     setFormState({ ...formState, emailAddress: event.target.value})
-                    }}
-                />
+                    <FormInput 
+                        name="emailAddress"
+                        value={formState.emailAddress}
+                        onChange={event => {
+                        // hook ensures rest of formStates object remains the same, only changes key value pair after ','
+                        setFormState({ ...formState, emailAddress: event.target.value})
+                        }}
+                    />
                 </ FormLabel>
                 <FormLabel>
                     Password
-                <FormInput 
-                     name="password"
-                     value={formState.password}
-                     onChange={event => {
-                      // hook ensures rest of formStates object remains the same, only changes key value pair after ','
-                     setFormState({ ...formState, password: event.target.value})
-                    }}
-                />
+                    <FormInput 
+                        name="password"
+                        value={formState.password}
+                        onChange={event => {
+                        // hook ensures rest of formStates object remains the same, only changes key value pair after ','
+                        setFormState({ ...formState, password: event.target.value})
+                        }}
+                    />
                 </ FormLabel>
                 <FormLabel>
                     Bio
-                <FormBioInput 
-                     name="bio"
-                     value={formState.bio}
-                     onChange={event => {
-                      // hook ensures rest of formStates object remains the same, only changes key value pair after ','
-                     setFormState({ ...formState, bio: event.target.value})
-                    }}
-                />
+                    <FormBioInput 
+                        name="bio"
+                        value={formState.bio}
+                        onChange={event => {
+                        // hook ensures rest of formStates object remains the same, only changes key value pair after ','
+                        setFormState({ ...formState, bio: event.target.value})
+                        }}
+                    />
                 </FormLabel>
                 <FormButton>SAVE CHANGES</FormButton>
                 </EditForm>
