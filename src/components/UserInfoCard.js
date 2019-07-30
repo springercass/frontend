@@ -13,6 +13,7 @@ const UserImageContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid gray;
 `
 const UserImage = styled.img`
     border-radius: 50%;
@@ -23,14 +24,31 @@ const TextContainer = styled.div`
     width: 66%;
     display: flex;
     flex-direction: column;
+    border: 1px solid lightgray;
 `
 const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
 `
 
-const StyledHeader = styled(Header)`
-    color: pink
+const StyledHeader = styled.h1`
+    color: #293846
+`
+
+const SettingsIcon = styled.div`
+    background-color: #293846
+    height: 33px;
+    width: 33px;
+`
+const Name = styled.h2`
+    color: #293846
+    align-self: flex-start;
+`
+
+const Description = styled.p`
+    color: #293846;
+    align-self: flex-start;
 `
 
 
@@ -42,8 +60,10 @@ const UserInfoCard = (props) => (
         </UserImageContainer>
         <TextContainer>
             <HeaderContainer>
-
+                <StyledHeader>Username</StyledHeader>
+                <SettingsIcon />
             </HeaderContainer>
+            <Name>Name</Name>
         </TextContainer>
     </FlexCenterMainContainer>
 )

@@ -3,6 +3,7 @@ import './App.css';
 import Nav from './components/nav';
 import UserInfoCard from './components/UserInfoCard';
 import styled from 'styled-components'
+import EditProfile from './components/EditProfile';
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -16,6 +17,7 @@ function App() {
     <AppContainer>
       <div className="App">
         <UserInfoCard />
+        <EditProfile />
       </div>
     </AppContainer>
   );
