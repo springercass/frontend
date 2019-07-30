@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { Container, Icon, Image, Header } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import palette from '../navImages/palette.png';
+import palette from './navImages/palette.png';
 
 function Nav () {
     return(
