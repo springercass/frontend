@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Image, Header } from "semantic-ui-react";
+import { Container, Image, Header, Modal } from "semantic-ui-react";
 import axios from "axios";
 
 function Gallery() {
@@ -16,10 +16,35 @@ function Gallery() {
 
   return (
     <Container fluid>
-      <Header textAlign="center" as="h1" style={{fontSize:"48px", lineHeigh:"58px", marginTop:"44px"}}>Gallery</Header>
-      <Container fluid style={galleryContainer}>
+      <Header
+        textAlign="center"
+        as="h1"
+        style={{ fontSize: "48px", lineHeigh: "58px", marginTop: "44px" }}
+      >
+        Gallery
+      </Header>
+      <Container style={galleryContainer}>
         {images.map(image => (
-          <Image style={imageStyle} src={image.url} size="medium" />
+          <div>
+            <Modal trigger={<Image style={imageStyle} src={image.url} size="medium" />}>
+              <Modal.Header>Select a Photo</Modal.Header>
+              <Modal.Content image>
+                <Image
+                  wrapped
+                  size="medium"
+                  src="/images/avatar/large/rachel.png"
+                />
+                <Modal.Description>
+                  <Header>Default Profile Image</Header>
+                  <p>
+                    We've found the following gravatar image associated with
+                    your e-mail address.
+                  </p>
+                  <p>Is it okay to use this photo?</p>
+                </Modal.Description>
+              </Modal.Content>
+            </Modal>
+          </div>
         ))}
       </Container>
     </Container>
@@ -30,7 +55,7 @@ const galleryContainer = {
   display: "flex",
   flexWrap: "wrap",
   justifyContent: "center",
-  maxWidth: "1500px"
+  width: "1500px"
 };
 const imageStyle = {
   overflow: "hidden",
