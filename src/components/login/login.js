@@ -20,11 +20,11 @@ function Login() {
                         <input/>
                         <a><h5>Forgot your password?</h5></a>
                     </Form.Field>
-                    <Button type='submit'>Explore</Button>
+                    <Button className="form-button" type='submit'>Explore</Button>
                 </Form>
                 <div className="no-account">
                     <h3>No account yet?</h3>
-                    <a>CREATE ACCOUNT</a>
+                    <Button className="create">CREATE ACCOUNT</Button>
                 </div>
             </div>
             <div>
