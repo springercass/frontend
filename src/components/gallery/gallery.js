@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid } from "semantic-ui-react";
+import { Container, Grid, Image } from "semantic-ui-react";
 import axios from "axios";
 
 function Gallery() {
@@ -13,17 +13,24 @@ function Gallery() {
   }, []);
 
   return (
-    <div>
-        {images.map((image)=>{
-            return(
-                <div>
-                    {/* <h3>{post.username}</h3> */}
-                    <img src={image.url}/>
-                </div>
-            )
-        })}
-    </div>
+    <Container style={galleryContainer}>
+        {images.map((image)=>
+            <Image style={imageStyle} src={image.url} size="medium"/>
+            
+        )}
+    </Container>
   )
+}
+
+const galleryContainer = {
+    display: 'flex',
+    flexWrap: 'wrap'
+}
+const imageStyle = {
+    overflow: 'hidden',
+    height: '300px',
+    width: '300px',
+    objectFit: 'cover'
 }
 
 export default Gallery;
