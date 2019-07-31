@@ -123,7 +123,6 @@ const EditProfile = (props) => {
     const userID = localStorage.getItem("userID")
     const token = localStorage.getItem("token")
 
-
     const submitHandler = (event) => {
         event.preventDefault()
 
