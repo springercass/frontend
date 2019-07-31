@@ -4,6 +4,8 @@ import Nav from './components/nav';
 import Login from './components/login/login'
 import NavLoggedIn from './components/navLoggedIn';
 import CreateAcc from './components/createacc/createacc'
+import EditProfile from './components/EditProfile'
+import UserInfoCard from './components/UserInfoCard'
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       <Nav />
       <CreateAcc/>
       <Login/>
+      <EditProfile />
+      <UserInfoCard />
     </div>
   );
 }
