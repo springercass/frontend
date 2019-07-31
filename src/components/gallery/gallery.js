@@ -65,7 +65,7 @@ function Gallery() {
         boundaryRange={0}
         defaultActivePage={1}
         activePage={activePage}
-        onPageChange={handlePageChange}
+        //onPageChange={handlePageChange}
         ellipsisItem={null}
         firstItem={null}
         lastItem={null}
