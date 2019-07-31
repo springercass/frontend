@@ -4,15 +4,27 @@ import axios from "axios";
 
 function Gallery() {
   const [images, setImages] = useState([]);
+  const [activePage, setActivePage] = useState(1);
+
+//   Function for returning slices of array, based on number of images per page (n), and which page we're on (page).
+  function paginate(array, n, page){
+    if (page === 1){
+        return array.slice(0,n)
+    } else {
+        return array.slice((page-1)*n, page*n)
+    }
+  }
 
   useEffect(() => {
     axios
       .get("https://art-portfolio-be.herokuapp.com/api/posts")
       .then(data => {
         console.log(data);
-        setImages(data.data);
+        setImages(paginate(data.data, 9, activePage))
+        // setImages(data.data.slice(9,18));
+
       });
-  }, []);
+  }, [activePage]);
 
   return (
     <Container fluid>
