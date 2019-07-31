@@ -5,7 +5,6 @@ import Login from './components/login/login'
 import NavLoggedIn from './components/nav/navLoggedIn';
 import Gallery from './components/gallery/gallery';
 import CreateAcc from './components/createacc/createacc'
-import Login from './components/login/login'
 import EditProfile from './components/EditProfile'
 import OtherUserInfoCard from './components/OtherUserInfoCard'
 import OwnUserInfoCard from './components/OwnUserInforCard'
