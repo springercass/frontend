@@ -11,7 +11,7 @@ import axios from "axios";
 
 function Gallery() {
   const [images, setImages] = useState([]);
-  const [myActivePage, setMyActivePage] = useState(1);
+  const [activePage, setActivePage] = useState(1);
   const [activeImages, setActiveImages] = useState([]);
 
   //   Function for returning slices of array, based on number of images per page (n), and which page we're on (page).
@@ -24,34 +24,33 @@ function Gallery() {
   }
 
   const handlePageChangeRight = e => {
-    console.log("event", e);
-    setMyActivePage(myActivePage + 1);
-    // setActiveImages(paginate(images, 9, myActivePage));
-    console.log("active page after right button:", myActivePage);
+    if (activePage > images.length / 9) {
+      setActivePage(activePage);
+    } else {
+      setActivePage(activePage + 1);
+    }
+    // console.log("event", e);
+    // console.log("active page after right button:", activePage);
   };
   const handlePageChangeLeft = e => {
-      if (myActivePage === 1){
-        setMyActivePage(myActivePage);
-      } else {
-        setMyActivePage(myActivePage - 1);
-        // setActiveImages(paginate(images, 9, myActivePage));
-      }
-    // console.log("event", e);
-    // console.log("active page:", myActivePage);
+    if (activePage === 1) {
+      setActivePage(activePage);
+    } else {
+      setActivePage(activePage - 1);
+    }
   };
 
   useEffect(() => {
     axios.get("https://art-portfolio-be.herokuapp.com/api/posts").then(data => {
       // console.log(data);
-      // setImages(paginate(data.data, 9, activePage))
       setImages(data.data);
-      setActiveImages(paginate(data.data, 9, myActivePage));
+      setActiveImages(paginate(data.data, 9, activePage));
     });
   }, []);
-  useEffect(()=>{
-    setActiveImages(paginate(images, 9, myActivePage));
 
-  }, [myActivePage])
+  useEffect(() => {
+    setActiveImages(paginate(images, 9, activePage));
+  }, [activePage]);
 
   return (
     <Container fluid>
@@ -124,7 +123,7 @@ function Gallery() {
         <Button compact onClick={handlePageChangeLeft}>
           <Icon name="chevron left" />
         </Button>
-        <div style={{ padding: "0px 20px" }}>{myActivePage}</div>
+        <div style={{ padding: "0px 20px" }}>{activePage}</div>
         <Button compact onClick={handlePageChangeRight}>
           <Icon name="chevron right" />
         </Button>
