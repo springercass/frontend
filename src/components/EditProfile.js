@@ -14,10 +14,7 @@ const EditProfileContainer = styled.div`
 
 const LeftSection = styled.div`
     width: 50%;
-<<<<<<< HEAD
     padding-top: 20px;
-=======
->>>>>>> 0689128d1f4fa97af2ca584042b0b9be88a26468
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,11 +27,7 @@ const RightSection = styled.div`
 `
 
 const StyledH1 = styled.h1`
-<<<<<<< HEAD
     font-size: 3.5rem;
-=======
-    font-size: 2.5rem;
->>>>>>> 0689128d1f4fa97af2ca584042b0b9be88a26468
 `
 
 const UserImageContainer = styled.div`
