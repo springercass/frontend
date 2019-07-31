@@ -7,6 +7,8 @@ import './login.scss'
 function Login(props) {
 
     const [user, setUser] = useState({username: '', password: ''});
+    localStorage.removeItem('token');
+    localStorage.removeItem('userID');
 
     const handleChanges = e => {
         setUser ({
@@ -14,7 +16,10 @@ function Login(props) {
             [e.target.name]: e.target.value
         })
     }
-    
+    const createButtonHandler = e => {
+        e.preventDefault();
+        props.history.push('/createacc')
+    }
     const handleSubmit = e => {
         e.preventDefault();
 
@@ -34,7 +39,8 @@ function Login(props) {
                 })
 
 
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
+            props.history.push('/');
     }
 
     return (
@@ -56,7 +62,7 @@ function Login(props) {
                 </Form>
                 <div className="no-account">
                     <h3>No account yet?</h3>
-                    <Button className="create">CREATE ACCOUNT</Button>
+                    <Button onClick={createButtonHandler} className="create">CREATE ACCOUNT</Button>
                 </div>
             </div>
             <div>
