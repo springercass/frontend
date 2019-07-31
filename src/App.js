@@ -14,8 +14,8 @@ function App() {
   return (
     <div className="App">
       <NavLoggedIn />
-      {/* <Gallery /> */}
-      <Nav />
+      <Gallery />
+      {/* <Nav /> */}
       <CreateAcc/>
       <Login/>
       <EditProfile />
