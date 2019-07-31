@@ -31,6 +31,7 @@ const RightContainer = styled.div`
     justify-content: center;
     align-items: center;
 `
+
 const EditProfileButton = styled.button`
     width: 222px;
     height: 48px;
@@ -134,7 +135,7 @@ const OwnUserInfoCard = (props) => (
                 <EditProfileButton>Edit Profile</EditProfileButton>
                 <NewPostButton>New Post</NewPostButton>
             </RightRightHalfCont>
-       </RightContainer>
+        </RightContainer>
    </UserInfoContainer>
 )
 

@@ -31,6 +31,7 @@ const RightContainer = styled.div`
     justify-content: center;
     align-items: center;
 `
+
 const MessageButton = styled.button`
     width: 222px;
     height: 48px;

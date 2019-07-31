@@ -128,18 +128,16 @@ const EditProfile = (props) => {
         event.preventDefault()
 
         axios
-        .put(`https://art-portfolio-be.herokuapp.com/api/users/${userID}`, formState, {
-            headers: {Authorization: token}
-        })
-        .then(response => {
-            console.log('made api call', response)
-        })
-        .catch( err => {
-            console.log('axios error editing user profile')
-        })
+            .put(`https://art-portfolio-be.herokuapp.com/api/users/${userID}`, formState, {
+                headers: {Authorization: token}
+            })
+            .then(response => {
+                console.log('made api call', response)
+            })
+            .catch( err => {
+                console.log('axios error editing user profile')
+            })
     }
-
-    // console.log(formState)
 
     const handleChanges = event => {
         setFormState({ ...formState, [event.target.name]: event.target.value})
@@ -156,50 +154,51 @@ const EditProfile = (props) => {
             </LeftSection>
             <RightSection>
                 <EditForm onSubmit={submitHandler}>
-                <FormLabel>
-                    First Name
-                    <FormInput 
-                        name="first_name"
-                        value={formState.first_name}
-                        onChange={handleChanges}
-                    />
-                </ FormLabel>
-                <FormLabel>
-                    Last Name
-                    <FormInput 
-                        name="last_name"
-                        value={formState.last_name}
-                        onChange={handleChanges}
-                    />
-                </ FormLabel>
-                <FormLabel>
-                    Username
-                    <FormInput 
-                        name="username"
-                        value={formState.username}
-                        onChange={handleChanges}
-                    />
-                </ FormLabel>
-                <FormLabel>
-                    Email Address
-                    <FormInput 
-                        name="email"
-                        value={formState.email}
-                        onChange={handleChanges}
-                    />
-                </ FormLabel>
-                <FormLabel>
-                    Bio
-                    <FormBioInput 
-                        name="bio"
-                        value={formState.bio}
-                        onChange={handleChanges}
-                    />
-                </FormLabel>
-                <FormButton>SAVE CHANGES</FormButton>
+                    <FormLabel>
+                        First Name
+                        <FormInput 
+                            name="first_name"
+                            value={formState.first_name}
+                            onChange={handleChanges}
+                        />
+                    </ FormLabel>
+                    <FormLabel>
+                        Last Name
+                        <FormInput 
+                            name="last_name"
+                            value={formState.last_name}
+                            onChange={handleChanges}
+                        />
+                    </ FormLabel>
+                    <FormLabel>
+                        Username
+                        <FormInput 
+                            name="username"
+                            value={formState.username}
+                            onChange={handleChanges}
+                        />
+                    </ FormLabel>
+                    <FormLabel>
+                        Email Address
+                        <FormInput 
+                            name="email"
+                            value={formState.email}
+                            onChange={handleChanges}
+                        />
+                    </ FormLabel>
+                    <FormLabel>
+                        Bio
+                        <FormBioInput 
+                            name="bio"
+                            value={formState.bio}
+                            onChange={handleChanges}
+                        />
+                    </FormLabel>
+                    <FormButton>SAVE CHANGES</FormButton>
                 </EditForm>
             </RightSection>
         </EditProfileContainer>
     )
 }
+
 export default EditProfile
