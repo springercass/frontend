@@ -10,14 +10,14 @@ function NavLoggedIn () {
         <Container fluid style={navStyle}>
         {/* <Icon name='edit' size='big'/> */}
             <div>
-                <Link style={navStyle}>
+                <Link to='/' style={navStyle}>
                     <Image src={palette} height="52.5px" width="52.5px"/>
                     <Header as="h4" textAlign="left" style={{maxWidth:"20px", color: "white", margin: "0px"}}>Art Portfolio</Header>
                 </Link>
             </div>
             <div style={navStyle}>
                 <SearchForm />
-                <Link style={{color: "white", margin: "0px 0px 0px 10px"}}>Log Out</Link>
+                <Link to='/login' style={{color: "white", margin: "0px 0px 0px 10px"}}>Log Out</Link>
             </div>
         </Container>
     )

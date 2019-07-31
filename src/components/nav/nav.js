@@ -8,13 +8,13 @@ function Nav () {
     return(
         <Container fluid style={navStyle}> {/*TODO: set margin to 0 in app.js*/}
         {/* <Icon name='edit' size='big'/> */}
-            <Link style={navStyle}>
+            <Link to='/' style={navStyle}>
                 <Image src={palette} height="52.5px" width="52.5px"/>
                 <Header as="h4" textAlign="left" style={{maxWidth:"20px", color: "white", margin: "0px"}}>Art Portfolio</Header>
             </Link>
             {/* <Link style={{color: "white", margin: "0px 30px 0px 0px"}}>FAQ</Link>
             <Link style={{color: "white", margin: "0px 30px 0px 0px"}}>About</Link> */}
-            <Link style={{color: "white", margin: "0px 30px 0px 0px"}}>Log In</Link>
+            <Link to='/login' style={{color: "white", margin: "0px 30px 0px 0px"}}>Log In</Link>
         </Container>
     )
 }
