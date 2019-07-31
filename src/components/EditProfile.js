@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 
 const EditProfileContainer = styled.div`
     width: 1034px;
@@ -112,19 +113,42 @@ const FormButton = styled.button`
 const EditProfile = (props) => {
     
     const [formState, setFormState] = useState({
-        name: '',
         username: '',
-        emailAddress: '',
-        password: '',
+        first_name: '',
+        last_name: '',
+        email: '',
         bio: ''
     })
 
+    const [userInfo, setUserInfo] = useState({
+        username: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        bio: ''
+    })
+
+    // const userID = localStorage.getItem("")
+    // const userID = 1
+
+    // useEffect(() => {
+    //         axios
+    //             .put(`https://art-portfolio-be.herokuapp.com/api/users/${userID}`, userInfo)
+    //             .then(response => {
+    //                 console.log('made api call', response)
+    //             })
+    //             .catch( err => {
+    //                 console.log('axios error editing user profile', userInfo)
+    //             })
+    //     }, [userInfo])
+
     const submitHandler = (event) => {
         event.preventDefault()
-        console.log('form submit')
-        // input axios put request
+        setUserInfo(formState)
+        console.log('userInfo', userInfo)
     }
-    console.log(formState)
+
+    // console.log(formState)
 
     return (
         <EditProfileContainer>
@@ -138,13 +162,24 @@ const EditProfile = (props) => {
             <RightSection>
                 <EditForm onSubmit={submitHandler}>
                 <FormLabel>
-                    Name
+                    First Name
                     <FormInput 
-                        name="name"
-                        value={formState.name}
+                        name="first_name"
+                        value={formState.first_name}
                         onChange={event => {
                         // hook ensures rest of formStates object remains the same, only changes key value pair after ','
-                        setFormState({ ...formState, name: event.target.value})
+                        setFormState({ ...formState, first_name: event.target.value})
+                        }}
+                    />
+                </ FormLabel>
+                <FormLabel>
+                    Last Name
+                    <FormInput 
+                        name="last_name"
+                        value={formState.last_name}
+                        onChange={event => {
+                        // hook ensures rest of formStates object remains the same, only changes key value pair after ','
+                        setFormState({ ...formState, last_name: event.target.value})
                         }}
                     />
                 </ FormLabel>
@@ -162,22 +197,11 @@ const EditProfile = (props) => {
                 <FormLabel>
                     Email Address
                     <FormInput 
-                        name="emailAddress"
-                        value={formState.emailAddress}
+                        name="email"
+                        value={formState.email}
                         onChange={event => {
                         // hook ensures rest of formStates object remains the same, only changes key value pair after ','
-                        setFormState({ ...formState, emailAddress: event.target.value})
-                        }}
-                    />
-                </ FormLabel>
-                <FormLabel>
-                    Password
-                    <FormInput 
-                        name="password"
-                        value={formState.password}
-                        onChange={event => {
-                        // hook ensures rest of formStates object remains the same, only changes key value pair after ','
-                        setFormState({ ...formState, password: event.target.value})
+                        setFormState({ ...formState, email: event.target.value})
                         }}
                     />
                 </ FormLabel>
