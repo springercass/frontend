@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Image, Header, Modal } from "semantic-ui-react";
+import { Container, Image, Header, Modal, Pagination } from "semantic-ui-react";
 import axios from "axios";
 
 function Gallery() {
@@ -15,6 +15,8 @@ function Gallery() {
     }
   }
 
+//   function handlePageChange((e, {activePage})=>)
+
   useEffect(() => {
     axios
       .get("https://art-portfolio-be.herokuapp.com/api/posts")
@@ -22,7 +24,6 @@ function Gallery() {
         console.log(data);
         setImages(paginate(data.data, 9, activePage))
         // setImages(data.data.slice(9,18));
-
       });
   }, [activePage]);
 
@@ -60,6 +61,17 @@ function Gallery() {
           </div>
         ))}
       </Container>
+      <Pagination 
+        boundaryRange={0}
+        defaultActivePage={1}
+        activePage={activePage}
+        onPageChange={handlePageChange}
+        ellipsisItem={null}
+        firstItem={null}
+        lastItem={null}
+        siblingRange={1}
+        totalPages={10}
+        />
     </Container>
   );
 }
