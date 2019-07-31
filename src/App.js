@@ -10,6 +10,7 @@ import CreateAcc from './components/createacc/createacc'
 import EditProfile from './components/EditProfile'
 import OtherUserInfoCard from './components/OtherUserInfoCard'
 import OwnUserInfoCard from './components/OwnUserInforCard'
+import ProfilePage from './components/profilePage/profilePage';
 
 function App() {
   return (
@@ -17,14 +18,13 @@ function App() {
       <div className="App">
         {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
         {/* <Gallery /> */}
-
+        {/* rendering profilepage on / just to test */}
+        {/* <Route exact path='/' component={ProfilePage} /> */}
         <Route exact path='/' component={Gallery} />
         <Route path='/login' component={Login} />
         <Route path='/createacc' component={CreateAcc} />
-        {/* <Route path='/otheruserinfo' component={OtherUserInfoCard} /> */}
         <PrivateRoute path='/editprofile' component={EditProfile} />
-        {/* <PrivateRoute path='/ownuserinfo' component={OwnUserInfoCard} /> */}
-        
+        <Route path='/users/:id' render={props=><ProfilePage {...props}/>}/>
       
       </div>
     </Router>
