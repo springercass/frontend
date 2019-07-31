@@ -6,7 +6,7 @@ import './createacc.scss'
 
 
 
-function CreateAcc() {
+function CreateAcc(props) {
     const [newUser, setNewUser] = useState({username: '', password: '', first_name: '', last_name: '', email: '', bio: ''})
     
     const handleChanges = e => {
@@ -33,7 +33,8 @@ function CreateAcc() {
                     bio: ''}
                 )
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
+            props.history.push('/login');
     }
     return (
 
