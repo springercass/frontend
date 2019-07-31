@@ -122,14 +122,14 @@ const RightRightHalfCont = styled.div`
 const OtherUserInfoCard = (props) => (
    <UserInfoContainer>
         <LeftContainer>
-            <UserImage src="https://avatars1.githubusercontent.com/u/48461758?s=460&v=4"/>
+            <UserImage src={props.profilePhoto}/>
         </LeftContainer>
         <RightContainer>
             <RightLeftHalfCont>
-                <StyledUsername>Mo</StyledUsername>
-                <StyledName>Monique Soto</StyledName>
-                <StyledEmail>monique@soto.com</StyledEmail>
-                <StyledBio>My photos are taken from various places I have traveled to around the world. I shoot with a Sony A7 camera with a 35 mm f/2.8 lens. I enjoy shooting fuzzy creatures, nature, and sometimes myself.</StyledBio>
+                <StyledUsername>{props.username}</StyledUsername>
+                <StyledName>{props.firstName}{' '}{props.lastName}</StyledName>
+                {/* <StyledEmail>monique@soto.com</StyledEmail> */}
+                <StyledBio>{props.bio}</StyledBio>
             </RightLeftHalfCont>
             <RightRightHalfCont>
                 <MessageButton>Message</MessageButton>
