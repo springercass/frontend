@@ -108,7 +108,7 @@ const FormButton = styled.button`
         color: #5C6AC4;
         background-color: white;
         border: 2px solid #5C6AC4;
-    }    
+    }
 `
 
 const EditProfile = (props) => {
@@ -120,6 +120,8 @@ const EditProfile = (props) => {
         email: '',
         bio: ''
     })
+
+    const [buttonState, setButtonState] = useState('SAVE CHANGES')
 
     const userID = localStorage.getItem("userID")
     const token = localStorage.getItem("token")
@@ -133,6 +135,14 @@ const EditProfile = (props) => {
             })
             .then(response => {
                 console.log('made api call', response)
+                setFormState({
+                    username: '',
+                    first_name: '',
+                    last_name: '',
+                    email: '',
+                    bio: ''
+                })
+                setButtonState('PROFILE UPDATED')
             })
             .catch( err => {
                 console.log('axios error editing user profile')
@@ -194,7 +204,7 @@ const EditProfile = (props) => {
                             onChange={handleChanges}
                         />
                     </FormLabel>
-                    <FormButton>SAVE CHANGES</FormButton>
+                    <FormButton>{buttonState}</FormButton>
                 </EditForm>
             </RightSection>
         </EditProfileContainer>
