@@ -21,7 +21,6 @@ const LeftContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    // border: 2px solid pink;
 `
 
 const RightContainer = styled.div`
@@ -29,19 +28,16 @@ const RightContainer = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    // border: 2px solid gray;
 `
 
 const RightTopContainer = styled.div`
     height: 50%;
     display: flex;
-    // border: 2px solid yellow;
 `
 
 const RightBottomContainer = styled.div`
     height: 50%;
     width: 75%;
-    // border: 2px solid blue;
 `
 
 const RightTopLeftCont = styled.div`
@@ -52,7 +48,6 @@ const RightTopLeftCont = styled.div`
     flex-wrap: no-wrap;
     align-items: flex-start;
     justify-content: center;
-    // border: 2px solid green;
 `
 
 const RightTopRightCont = styled.div`
@@ -122,7 +117,6 @@ const StyledBio = styled.p`
     padding: 0;
     text-align: left;
     font-size: 1.1rem;
-    // font-weight: 500;
 `
 
 const UserInfoCard = (props) => (
