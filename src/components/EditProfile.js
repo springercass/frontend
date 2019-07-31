@@ -14,6 +14,7 @@ const EditProfileContainer = styled.div`
 
 const LeftSection = styled.div`
     width: 50%;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,7 +27,7 @@ const RightSection = styled.div`
 `
 
 const StyledH1 = styled.h1`
-    font-size: 2.5rem;
+    font-size: 3.5rem;
 `
 
 const UserImageContainer = styled.div`
@@ -136,8 +137,6 @@ const EditProfile = (props) => {
         .catch( err => {
             console.log('axios error editing user profile')
         })
-    
-
     }
 
     // console.log(formState)

@@ -7,6 +7,7 @@ const UserInfoContainer = styled.div`
     height: 393px;
     border-bottom: 2px solid #777798;
     display: flex;
+    margin-bottom: 60px;
 `
 
 const UserImage = styled.img`
@@ -27,37 +28,9 @@ const RightContainer = styled.div`
     width: 66%;
     height: 100%;
     display: flex;
-    flex-direction: column;
-`
-
-const RightTopContainer = styled.div`
-    height: 50%;
-    display: flex;
-`
-
-const RightBottomContainer = styled.div`
-    height: 50%;
-    width: 75%;
-`
-
-const RightTopLeftCont = styled.div`
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: no-wrap;
-    align-items: flex-start;
     justify-content: center;
-`
-
-const RightTopRightCont = styled.div`
-    width: 50%;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
 `
-
 const MessageButton = styled.button`
     width: 222px;
     height: 48px;
@@ -98,7 +71,7 @@ const StyledUsername = styled.h1`
     margin: 0;
     padding: 0;
     margin-bottom: 10px;
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 500;
 `
 
@@ -107,8 +80,20 @@ const StyledName = styled.p`
     margin: 0;
     padding: 0;
     font-style: italic
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 500;
+    margin-bottom: 10px;
+`
+
+const StyledEmail = styled.p`
+    color: #5C6AC4;
+    margin: 0;
+    padding: 0;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-decoration: underline;
+    cursor: pointer;
 `
 
 const StyledBio = styled.p`
@@ -116,30 +101,41 @@ const StyledBio = styled.p`
     margin: 0;
     padding: 0;
     text-align: left;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 `
 
-const UserInfoCard = (props) => (
+const RightLeftHalfCont = styled.div`
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 5%;
+`
+
+const RightRightHalfCont = styled.div`
+    width: 40%;
+    
+`
+
+const OtherUserInfoCard = (props) => (
    <UserInfoContainer>
         <LeftContainer>
             <UserImage src="https://avatars1.githubusercontent.com/u/48461758?s=460&v=4"/>
-       </LeftContainer>
-       <RightContainer>
-            <RightTopContainer>
-                <RightTopLeftCont>
-                    <StyledUsername>Mo</StyledUsername>
-                    <StyledName>Monique Soto</StyledName>
-                </RightTopLeftCont>
-                <RightTopRightCont>
-                    <MessageButton>Message</MessageButton>
-                    <SubscribeButton>Subscribe</SubscribeButton>
-                </RightTopRightCont>
-            </RightTopContainer>
-            <RightBottomContainer>
+        </LeftContainer>
+        <RightContainer>
+            <RightLeftHalfCont>
+                <StyledUsername>Mo</StyledUsername>
+                <StyledName>Monique Soto</StyledName>
+                <StyledEmail>monique@soto.com</StyledEmail>
                 <StyledBio>My photos are taken from various places I have traveled to around the world. I shoot with a Sony A7 camera with a 35 mm f/2.8 lens. I enjoy shooting fuzzy creatures, nature, and sometimes myself.</StyledBio>
-            </RightBottomContainer>
+            </RightLeftHalfCont>
+            <RightRightHalfCont>
+                <MessageButton>Message</MessageButton>
+                <SubscribeButton>Subscribe</SubscribeButton>
+            </RightRightHalfCont>
        </RightContainer>
    </UserInfoContainer>
 )
 
-export default UserInfoCard
+export default OtherUserInfoCard
