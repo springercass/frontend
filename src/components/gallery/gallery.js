@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import NavLoggedIn from '../nav/navLoggedIn';
 import Nav from '../nav/nav';
+import UpvoteButton from './upvoteButton';
 
 function Gallery() {
   const [images, setImages] = useState([]);
@@ -107,9 +108,12 @@ function Gallery() {
                         .slice(10, 15)}
                   </Header>
                 </div>
-                <Modal.Description>
-                  <p style={{ color: "black" }}>{image.description}</p>
-                </Modal.Description>
+<div style={{display:'flex', justifyContent:'space-between'}}>
+                    <Modal.Description>
+                      <p style={{ color: "black" }}>{image.description}</p>
+                    </Modal.Description>
+                    <UpvoteButton />
+</div>
               </Modal.Content>
             </Modal>
           </div>
