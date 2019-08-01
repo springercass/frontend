@@ -138,12 +138,13 @@ function Gallery() {
       // console.log(data);
       setImages(data.data);
       setActiveImages(paginate(data.data, 9, activePage));
+      setButtonState('UPDATE DESCRIPTION')
     });
-  }, []);
+  }, [buttonState]);
 
   useEffect(() => {
     setActiveImages(paginate(images, 9, activePage));
-  }, [activePage]);
+  }, [activePage, buttonState]);
 
   return (
     <Container fluid>
