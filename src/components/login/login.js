@@ -39,7 +39,9 @@ function Login(props) {
                 })
 
 
-            .catch(err => console.log(err));
+            .catch(err => {console.log(err)
+                props.history.push('/login')
+            });
             props.history.push('/');
     }
 
