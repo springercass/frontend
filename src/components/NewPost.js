@@ -132,6 +132,7 @@ const NewPost = (props) => {
                         url: '',
                         description: ''
                     })
+                    setUrlState('')
                     setButtonState('POST CREATED')
                 })
                 .catch( err => {
