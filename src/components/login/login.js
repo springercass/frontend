@@ -1,15 +1,20 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import { Form, Button } from 'semantic-ui-react'
 import Axios from 'axios';
 import GalleryPreview from '../GalleryPreview/GalleryPreview'
-
+import NavLoggedIn from '../nav/navLoggedIn';
+import Nav from '../nav/nav';
 import './login.scss'
 
 function Login(props) {
+    useEffect(() => {
+        localStorage.getItem('token') && localStorage.removeItem('token')
+        localStorage.getItem('userID') && localStorage.removeItem('userID')
+    },[])
+   
 
     const [user, setUser] = useState({username: '', password: ''});
-    localStorage.removeItem('token');
-    localStorage.removeItem('userID');
+
 
     const handleChanges = e => {
         setUser ({
@@ -54,8 +59,11 @@ function Login(props) {
     }
 
     return (
+        <div>
+        {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
 
         <div className="login-container">
+
             <div className="form-container">
                 <h1>Log In</h1>
                 <Form onSubmit={handleSubmit}>
@@ -78,7 +86,7 @@ function Login(props) {
                 <GalleryPreview />
             </div>
         </div>
-
+        </div>
     )
 
 }
