@@ -1,6 +1,7 @@
 import React, { useState }from 'react';
 import { Form, Button } from 'semantic-ui-react'
 import Axios from 'axios';
+import GalleryPreview from "../GalleryPreview/GalleryPreview"
 
 import './createacc.scss'
 
@@ -65,8 +66,8 @@ function CreateAcc(props) {
                     <Button className="form-button" type='submit'>Join Now</Button>
                 </Form>
             </div>
-            <div>
-                <h1>Gallery Preview goes here</h1>
+            <div className='gallery-container'>
+                <GalleryPreview/>
             </div>
         </div>
 
