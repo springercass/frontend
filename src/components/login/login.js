@@ -15,7 +15,6 @@ function Login(props) {
 
     const [user, setUser] = useState({username: '', password: ''});
 
-
     const handleChanges = e => {
         setUser ({
             ...user,
@@ -41,7 +40,7 @@ function Login(props) {
                         username: '',
                         password: ''
                     })
-                    props.history.push('/');
+                    props.history.push(`/users/${localStorage.getItem('userID')}`);
                 })
 
 

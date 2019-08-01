@@ -8,6 +8,8 @@ import {
   Icon
 } from "semantic-ui-react";
 import axios from "axios";
+import UpvoteButton from './upvoteButton';
+import {Link} from 'react-router-dom';
 
 // nested modal start 
 
@@ -155,10 +157,10 @@ function UserGallery(props) {
     axios.get(`https://art-portfolio-be.herokuapp.com/api/users/${props.id}/posts`).then(data => {
       console.log(data.data);
       setImages(data.data);
-      setActiveImages(paginate(data.data, 9, activePage));
+      setActiveImages(paginate(data.data.reverse(), 9, activePage));
       setButtonState('UPDATE DESCRIPTION')
     });
-  }, [buttonState]);
+  }, [buttonState, props.id]);
 
   useEffect(() => {
     setActiveImages(paginate(images, 9, activePage));
@@ -184,6 +186,7 @@ function UserGallery(props) {
                     alignItems: "center"
                   }}
                 >
+                <Link to={`/users/${image.userID}`}>
                   <Header
                     as="h5"
                     compact
@@ -191,7 +194,7 @@ function UserGallery(props) {
                   >
                     @{image.username}
                   </Header>
-                  {/* TODO: Make above header a link to profile route */}
+                </Link>
                   <Header
                     as="h5"
                     style={dateStyle}
@@ -205,10 +208,12 @@ function UserGallery(props) {
                         .slice(10, 15)}
                   </Header>
                 </div>
+                <div style={{display:'flex', justifyContent:'space-between'}}>
                 <Modal.Description>
                   <p style={{ color: "black" }}>{image.description}</p>
                 </Modal.Description>
-
+                <UpvoteButton image={image}/>
+                </div>
                     {/* Nested Modal Start */}
                       
                     <span style={{color: "#d3d4dd" }}>{loggedInUser === image.username ? buttonDisplayState = "block" : buttonDisplayState = "none" }</span>

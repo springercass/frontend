@@ -10,6 +10,8 @@ import {
 import axios from "axios";
 import NavLoggedIn from '../nav/navLoggedIn';
 import Nav from '../nav/nav';
+import UpvoteButton from './upvoteButton';
+import { Link } from 'react-router-dom'
 
 function Gallery() {
   const [images, setImages] = useState([]);
@@ -73,11 +75,11 @@ function Gallery() {
           <div>
             <Modal
               basic
-              size="large"
+            //   size=""
               style={modalStyle}
               trigger={<Image style={imageStyle} src={image.url} />}
             >
-              <Image style={{ margin: "0px 0px", backgroundColor: "white" }} src={image.url} />
+              <Image style={{ margin: "0px 0px 0px 0px", width: "100%", backgroundColor: "white" }} src={image.url} />
               <Modal.Content style={{ backgroundColor: "#D3D4DE" }}>
                 <div
                   style={{
@@ -86,13 +88,15 @@ function Gallery() {
                     alignItems: "center"
                   }}
                 >
-                  <Header
-                    as="h5"
-                    compact
-                    style={usernameStyle}
-                  >
-                    @{image.username}
-                  </Header>
+                    <Link to={`/users/${image.userID}`}>
+                      <Header
+                        as="h5"
+                        compact
+                        style={usernameStyle}
+                      >
+                        @{image.username}
+                      </Header>
+                    </Link>
                   {/* TODO: Make above header a link to profile route */}
                   <Header
                     as="h5"
@@ -107,9 +111,12 @@ function Gallery() {
                         .slice(10, 15)}
                   </Header>
                 </div>
-                <Modal.Description>
-                  <p style={{ color: "black" }}>{image.description}</p>
-                </Modal.Description>
+                <div style={{display:'flex', justifyContent:'space-between'}}>
+                    <Modal.Description>
+                      <p style={{ color: "black" }}>{image.description}</p>
+                    </Modal.Description>
+                    <UpvoteButton image={image}/>
+                </div>
               </Modal.Content>
             </Modal>
           </div>
@@ -157,7 +164,7 @@ const modalStyle = {
   width: "auto",
   height: "auto",
   maxWidth: "1000px",
-  objectFit: "contain"
+//   objectFit: "contain"
   //   borderRadius: "0px"
 };
 

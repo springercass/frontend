@@ -145,7 +145,7 @@ const OwnUserInfoCard = (props) => (
                 <Link to="/editprofile"><EditProfileButton >Edit Profile</EditProfileButton></Link>
                 <Modal trigger={<NewPostButton>New Post</NewPostButton>} closeIcon={{ style: { top: '30px', right: '50px' }, name: 'close' }} basic size='small' >
                     <Modal.Content >
-                        <NewPost />
+                        <NewPost/>
                     </Modal.Content>
                 </Modal>
             </RightRightHalfCont>
