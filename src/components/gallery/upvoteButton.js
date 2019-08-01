@@ -3,39 +3,46 @@ import axios from "axios";
 import { Label, Button, Icon } from "semantic-ui-react";
 
 function UpvoteButton(props) {
-  console.log("props in upvoteButton", props); // Getting image/post information, check. id will be props.image.id
+  console.log("props in upvoteButton", props); // Getting image/post information
 
   const postID = props.image.id;
+  const userID = localStorage.getItem("userID")
+  const token = localStorage.getItem("token")
 
   const [clicked, setClicked] = useState(false);
   const [likes, setLikes] = useState();
+  const [like, setLike] = useState({})
 
   useEffect(() => {
      axios.get(`https://art-portfolio-be.herokuapp.com/api/likes/posts/${postID}`) 
      .then(response=>{
-         console.log('response', response)
          setLikes(response.data.likes)
      })
-  }, [clicked]);
+  }, [clicked, like]);
 
-  useEffect(() => {
-      axios.post()
-    
-  }, []);
+  useEffect(()=>{
+    axios.post(`https://art-portfolio-be.herokuapp.com/api/likes/posts/${postID}`, like, {
+        headers: {Authorization: token}
+    })
+    .then(response => {
+        console.log('posted to api', response)
+        setClicked(true);
+        setLike({})
+    })
+},[like])
 
   const clickHandler = event => {
-    // alert("upvoted! (just kidding)");
-    setClicked(true);
-    setLikes(likes+1);
+    event.preventDefault()
+    !clicked ? setLike({userID: userID, postID: postID}) : setLike({})
     console.log('likes, clicked', likes, clicked)
   };
 
   return (
     <div style={{ likeContainer }}>
-      <Label>9 likes</Label>
-      <Button onClick={clickHandler} circular icon>
+      <Label>{likes} likes</Label>
+      {token ? <Button onClick={clickHandler} circular icon>
         <Icon name="like" />
-      </Button>
+      </Button> : <div></div>}
     </div>
   );
 }
