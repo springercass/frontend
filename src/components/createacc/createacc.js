@@ -1,6 +1,9 @@
 import React, { useState }from 'react';
 import { Form, Button } from 'semantic-ui-react'
 import Axios from 'axios';
+import GalleryPreview from "../GalleryPreview/GalleryPreview"
+import NavLoggedIn from '../nav/navLoggedIn';
+import Nav from '../nav/nav';
 
 import './createacc.scss'
 
@@ -37,8 +40,11 @@ function CreateAcc(props) {
             props.history.push('/login');
     }
     return (
+        <div>
+            {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
 
         <div className="create-container">
+
             <div className="form-container">
                 <h1>Create Account</h1>
                 <Form onSubmit={handleSubmit}>
@@ -65,9 +71,10 @@ function CreateAcc(props) {
                     <Button className="form-button" type='submit'>Join Now</Button>
                 </Form>
             </div>
-            <div>
-                <h1>Gallery Preview goes here</h1>
+            <div className='gallery-container'>
+                <GalleryPreview/>
             </div>
+        </div>
         </div>
 
     )

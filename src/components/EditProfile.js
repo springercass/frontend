@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import NavLoggedIn from './nav/navLoggedIn';
+import Nav from './nav/nav';
 
 const EditProfileContainer = styled.div`
     width: 1034px;
@@ -154,7 +156,11 @@ const EditProfile = (props) => {
     }
 
     return (
+        <div>
+            {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
+
         <EditProfileContainer>
+
             <LeftSection>
                 <StyledH1>Profile</StyledH1>
                 <UserImageContainer>
@@ -208,6 +214,7 @@ const EditProfile = (props) => {
                 </EditForm>
             </RightSection>
         </EditProfileContainer>
+        </div>
     )
 }
 

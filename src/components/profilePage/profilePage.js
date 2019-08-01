@@ -4,6 +4,8 @@ import OwnUserInfoCard from "../OwnUserInforCard";
 import UserGallery from "../gallery/userGallery";
 import { Container } from "semantic-ui-react";
 import axios from "axios";
+import NavLoggedIn from '../nav/navLoggedIn';
+import Nav from '../nav/nav';
 
 // Prop we'll need: a user's id, so we can make axios call and populate info cards with data (sending via more props).
 function ProfilePage(props) {
@@ -27,7 +29,7 @@ function ProfilePage(props) {
   if (loggedInUserID === id){
       return (
         <div style={{ center }}>
-
+            {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
             <OwnUserInfoCard
               id={loggedInUserID}
               username={user.username}
@@ -45,7 +47,7 @@ function ProfilePage(props) {
   } else {
       return (
         <div style={{ center }}>
-
+            {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
             <OtherUserInfoCard
               id={id}
               username={user.username}
