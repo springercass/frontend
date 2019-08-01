@@ -112,7 +112,7 @@ function Gallery() {
                     <Modal.Description>
                       <p style={{ color: "black" }}>{image.description}</p>
                     </Modal.Description>
-                    <UpvoteButton />
+                    <UpvoteButton image={image}/>
 </div>
               </Modal.Content>
             </Modal>
