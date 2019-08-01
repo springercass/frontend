@@ -9,6 +9,7 @@ import {
 } from "semantic-ui-react";
 import axios from "axios";
 import UpvoteButton from './upvoteButton';
+import {Link} from 'react-router-dom';
 
 // nested modal start 
 
@@ -159,7 +160,7 @@ function UserGallery(props) {
       setActiveImages(paginate(data.data.reverse(), 9, activePage));
       setButtonState('UPDATE DESCRIPTION')
     });
-  }, [buttonState, props.newPost]);
+  }, [buttonState, props.id]);
 
   useEffect(() => {
     setActiveImages(paginate(images, 9, activePage));
@@ -185,6 +186,7 @@ function UserGallery(props) {
                     alignItems: "center"
                   }}
                 >
+                <Link to={`/users/${image.userID}`}>
                   <Header
                     as="h5"
                     compact
@@ -192,7 +194,7 @@ function UserGallery(props) {
                   >
                     @{image.username}
                   </Header>
-                  {/* TODO: Make above header a link to profile route */}
+                </Link>
                   <Header
                     as="h5"
                     style={dateStyle}
