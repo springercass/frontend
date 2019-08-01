@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Art Portfolio #
 
-## Available Scripts
+## Build Week Group Project ##
 
-In the project directory, you can run:
+### React Frontend for Website ###
 
-### `npm start`
+<details>
+<summary>Project Description</summary>
+<br>
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+__Pitch:__ As an artist I want to be able to show off my work. I'm a photographer and I have a lot of amazing foodie pics I'd like to share with potential clients, but I need a site that is more professional than Instagram in order to do so.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+__MVP:__ User can visit site and see artists photos laid out in a grid , artist can create, read update photos. No ability to upload one's own photos.
 
-### `npm test`
+__Stretch Goal:__ Build an image uploader into the site to allow users the ability to upload their own assets. (This will require some work with a package called Drop Zone and a service called cloudinary).
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+</details>
+<br>
 
-### `npm run build`
+### Installation ###
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Fork, Clone, or Download on GitHub
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Usage ###
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+After downloading, simply edit the Javascript & SASS files included in your favorite text editor to make changes. These are the only files you need to focus on to create your own react front end. Use Yarn or NPM to install any needed modules then start the project, you can then preview the changes you make to the code in your web browser.
 
-### `npm run eject`
+### Bugs or Issues ###
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Find a bug or have an issue with this project? [Open a new issue here on GitHub.](https://github.com/build-art-portfolio/frontend/issues/new)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Desktop Preview ###
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![picture alt](https://art-portfolio-lambda.netlify.com/img/login.png "Login")
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![picture alt](https://art-portfolio-lambda.netlify.com/img/mainGallery.png "Main Gallery")
 
-## Learn More
+![picture alt](https://art-portfolio-lambda.netlify.com/img/otherUserGallery.png "Other Users Gallery")
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![picture alt](https://art-portfolio-lambda.netlify.com/img/ownUserGallery.png "Logged-In Users Gallery")
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![picture alt](https://art-portfolio-lambda.netlify.com/img/editProfile.png "Edit Profile")
 
-### Code Splitting
+![picture alt](https://art-portfolio-lambda.netlify.com/img/newPost.png "Create New Post")
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+![picture alt](https://art-portfolio-lambda.netlify.com/img/postPreview.png "View Post")
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![picture alt](https://art-portfolio-lambda.netlify.com/img/updateDescription.png "Update Post Description")
