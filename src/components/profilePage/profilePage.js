@@ -12,10 +12,11 @@ function ProfilePage(props) {
   const loggedInUserID = localStorage.getItem("userID");
   const token = localStorage.getItem("token");
   const id = props.match.params.id;
-  console.log("id", id);
-  console.log("props in profilePage", props);
-  console.log('userID', loggedInUserID)
+//   console.log("id", id);
+//   console.log("props in profilePage", props);
+//   console.log('userID', loggedInUserID)
   const [user, setUser] = useState({});
+  const [currentId, setCurrentId] = useState(id);
 
   useEffect(() => {
     axios
@@ -23,10 +24,12 @@ function ProfilePage(props) {
       .then(data => {
         console.log("response", data.data);
         setUser(data.data);
+        setCurrentId(id);
       });
-  }, []);
 
-  if (loggedInUserID === id){
+  }, [user]);
+
+  if (loggedInUserID === currentId){
       return (
         <div style={ center }>
             {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
@@ -40,7 +43,7 @@ function ProfilePage(props) {
               email={user.email}
             />
          
-          <UserGallery id={id} />
+          <UserGallery id={currentId} />
         </div>
 
       )
@@ -58,37 +61,11 @@ function ProfilePage(props) {
               email={user.email}
             />
           
-          <UserGallery id={id} />
+          <UserGallery id={currentId} />
         </div>
 
       )
   }
-
-
-//   return (
-//     <div style={{ center }}>
-//       {loggedInUserID ? (
-//         <OwnUserInforCard
-//           id={loggedInUserID}
-//           username={user.username}
-//           firstName={user.first_name}
-//           lastName={user.last_name}
-//           bio={user.bio}
-//           profilePhoto={user.profilePhoto}
-//         />
-//       ) : (
-//         <OtherUserInfoCard
-//           id={id}
-//           username={user.username}
-//           firstName={user.first_name}
-//           lastName={user.last_name}
-//           bio={user.bio}
-//           profilePhoto={user.profilePhoto}
-//         />
-//       )}
-//       <UserGallery id={id} />
-//     </div>
-//   );
 }
 
 const center = {
