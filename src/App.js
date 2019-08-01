@@ -6,19 +6,19 @@ import Login from './components/login/login'
 import Gallery from './components/gallery/gallery';
 import CreateAcc from './components/createacc/createacc'
 import EditProfile from './components/EditProfile'
-
+import OtherUserInfoCard from './components/OtherUserInfoCard'
+import OwnUserInfoCard from './components/OwnUserInforCard'
+import ProfilePage from './components/profilePage/profilePage';
 
 function App() {
   return (
     <Router>
       <div className="App">
-
         <Route exact path='/' component={Gallery} />
         <Route path='/login' component={Login} />
         <Route path='/createacc' component={CreateAcc} />
         <PrivateRoute path='/editprofile' component={EditProfile} />
-        
-      
+        <Route path='/users/:id' render={props=><ProfilePage {...props}/>}/>
       </div>
     </Router>
   );

@@ -8,10 +8,8 @@ import {
   Icon
 } from "semantic-ui-react";
 import axios from "axios";
-import NavLoggedIn from '../nav/navLoggedIn';
-import Nav from '../nav/nav';
 
-function Gallery() {
+function UserGallery(props) {
   const [images, setImages] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [activeImages, setActiveImages] = useState([]);
@@ -44,8 +42,8 @@ function Gallery() {
   };
 
   useEffect(() => {
-    axios.get("https://art-portfolio-be.herokuapp.com/api/posts").then(data => {
-      // console.log(data);
+    axios.get(`https://art-portfolio-be.herokuapp.com/api/users/${props.id}/posts`).then(data => {
+      console.log(data.data);
       setImages(data.data);
       setActiveImages(paginate(data.data, 9, activePage));
     });
@@ -57,15 +55,6 @@ function Gallery() {
 
   return (
     <Container fluid>
-      {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
-
-      <Header
-        textAlign="center"
-        as="h1"
-        style={headerStyle}
-      >
-        Gallery
-      </Header>
       <Container style={galleryContainer}>
         {activeImages.map(image => (
           <div>
@@ -75,7 +64,7 @@ function Gallery() {
               style={modalStyle}
               trigger={<Image style={imageStyle} src={image.url} />}
             >
-              <Image style={{ margin: "0px 0px", backgroundColor: "white" }} src={image.url} />
+              <Image style={{ margin: "0px 0px", backgroundColor: "white"}} src={image.url} />
               <Modal.Content style={{ backgroundColor: "#D3D4DE" }}>
                 <div
                   style={{
@@ -137,9 +126,8 @@ const galleryContainer = {
 
 const headerStyle = { 
     fontSize: "48px", 
-    lineHeigh: "58px", 
-    marginTop: "44px",
-    backgroundColor: "#E5E5E5"
+    lineHeight: "58px", 
+    marginTop: "44px" 
 }
 
 const imageStyle = {
@@ -176,4 +164,4 @@ const buttonsStyle = {
     alignItems: "center"
 }
 
-export default Gallery;
+export default UserGallery;
