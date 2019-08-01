@@ -1,14 +1,20 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import { Form, Button } from 'semantic-ui-react'
 import Axios from 'axios';
-
+import GalleryPreview from '../GalleryPreview/GalleryPreview'
+import NavLoggedIn from '../nav/navLoggedIn';
+import Nav from '../nav/nav';
 import './login.scss'
 
 function Login(props) {
+    useEffect(() => {
+        localStorage.getItem('token') && localStorage.removeItem('token')
+        localStorage.getItem('userID') && localStorage.removeItem('userID')
+    },[])
+   
 
     const [user, setUser] = useState({username: '', password: ''});
-    localStorage.removeItem('token');
-    localStorage.removeItem('userID');
+
 
     const handleChanges = e => {
         setUser ({
@@ -35,17 +41,29 @@ function Login(props) {
                         username: '',
                         password: ''
                     })
-            
+                    props.history.push('/');
                 })
 
 
-            .catch(err => console.log(err));
-            props.history.push('/');
+            .catch(err => { 
+                console.log(err)
+                setUser({
+                    username: '',
+                    password: ''
+                })
+                props.history.push('/login')
+                alert('You do not have an account or you have entered an incorrect username/password; please try again or create an account')
+
+            });
+            
     }
 
     return (
+        <div>
+        {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
 
         <div className="login-container">
+
             <div className="form-container">
                 <h1>Log In</h1>
                 <Form onSubmit={handleSubmit}>
@@ -56,7 +74,6 @@ function Login(props) {
                     <Form.Field>
                         <label>Password</label>
                         <input name='password' onChange={handleChanges} value={user.password} />
-                        <a><h5>Forgot your password?</h5></a>
                     </Form.Field>
                     <Button className="form-button" type='submit'>Explore</Button>
                 </Form>
@@ -65,11 +82,11 @@ function Login(props) {
                     <Button onClick={createButtonHandler} className="create">CREATE ACCOUNT</Button>
                 </div>
             </div>
-            <div>
-                <h1>Gallery Preview goes here</h1>
+            <div className='gallery-container'>
+                <GalleryPreview />
             </div>
         </div>
-
+        </div>
     )
 
 }
