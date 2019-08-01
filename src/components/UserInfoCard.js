@@ -7,6 +7,7 @@ const UserInfoContainer = styled.div`
     height: 393px;
     border-bottom: 2px solid #777798;
     display: flex;
+    background: #e5e5e5;
 `
 
 const UserImage = styled.img`

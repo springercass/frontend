@@ -28,7 +28,7 @@ function ProfilePage(props) {
 
   if (loggedInUserID === id){
       return (
-        <div style={{ center }}>
+        <div style={ center }>
             {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
             <OwnUserInfoCard
               id={loggedInUserID}
@@ -46,7 +46,7 @@ function ProfilePage(props) {
       )
   } else {
       return (
-        <div style={{ center }}>
+        <div style={ center }>
             {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
             <OtherUserInfoCard
               id={id}
@@ -92,9 +92,6 @@ function ProfilePage(props) {
 }
 
 const center = {
-  display: "flex",
-  flexDirection: "column",
-//   alignContent: "center",
   backgroundColor: "#E5E5E5"
 };
 

@@ -6,8 +6,11 @@ import palette from './navImages/palette.png';
 import SearchForm from './searchForm';
 
 function NavLoggedIn () {
+    
+    const id = localStorage.getItem("userID")
+
     return(
-        <Container fluid style={navStyle}>
+        <Container fluid style={genNavStyle}>
         {/* <Icon name='edit' size='big'/> */}
             <div>
                 <Link to='/' style={navStyle}>
@@ -16,7 +19,8 @@ function NavLoggedIn () {
                 </Link>
             </div>
             <div style={navStyle}>
-                <SearchForm />
+                <Link to={`/users/${id}`} style={{color: "white", margin: "0px 0px 0px 10px"}}>My Profile</Link>
+                <Link to='/' style={{color: "white", margin: "0px 0px 0px 10px"}}>Gallery</Link>
                 <Link to='/login' style={{color: "white", margin: "0px 0px 0px 10px"}}>Log Out</Link>
             </div>
         </Container>
@@ -31,7 +35,21 @@ const navStyle={
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '0px 30px 0px 17px'
+    padding: '0px 30px 0px 17px',
+    
+}
+
+const genNavStyle = {
+    boxShadow: '0px 2.5px 5px 0px rgba(184,185,189,1)',
+    maxWidth: '1500px',
+    height: '80px',
+    // border: '1px solid blue'
+    backgroundColor: '#202E78',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '0px 30px 0px 17px',
+    marginBottom: '5px'
 }
 
 export default NavLoggedIn;
