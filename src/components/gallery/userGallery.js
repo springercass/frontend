@@ -64,7 +64,7 @@ function UserGallery(props) {
               style={modalStyle}
               trigger={<Image style={imageStyle} src={image.url} />}
             >
-              <Image style={{ margin: "0px 0px" }} src={image.url} />
+              <Image style={{ margin: "0px 0px", backgroundColor: "white"}} src={image.url} />
               <Modal.Content style={{ backgroundColor: "#D3D4DE" }}>
                 <div
                   style={{
@@ -126,7 +126,7 @@ const galleryContainer = {
 
 const headerStyle = { 
     fontSize: "48px", 
-    lineHeigh: "58px", 
+    lineHeight: "58px", 
     marginTop: "44px" 
 }
 
@@ -135,7 +135,8 @@ const imageStyle = {
   height: "336px",
   width: "336px",
   objectFit: "cover",
-  margin: "22.5px 24px"
+  margin: "22.5px 24px",
+  backgroundColor: "white"
 };
 
 const modalStyle = {

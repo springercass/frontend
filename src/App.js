@@ -17,15 +17,11 @@ function App() {
     <Router>
       <div className="App">
         {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
-        {/* <Gallery /> */}
-        {/* rendering profilepage on / just to test */}
-        {/* <Route exact path='/' component={ProfilePage} /> */}
         <Route exact path='/' component={Gallery} />
         <Route path='/login' component={Login} />
         <Route path='/createacc' component={CreateAcc} />
         <PrivateRoute path='/editprofile' component={EditProfile} />
         <Route path='/users/:id' render={props=><ProfilePage {...props}/>}/>
-      
       </div>
     </Router>
   );

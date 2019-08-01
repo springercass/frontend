@@ -71,7 +71,7 @@ function Gallery() {
               style={modalStyle}
               trigger={<Image style={imageStyle} src={image.url} />}
             >
-              <Image style={{ margin: "0px 0px" }} src={image.url} />
+              <Image style={{ margin: "0px 0px", backgroundColor: "white" }} src={image.url} />
               <Modal.Content style={{ backgroundColor: "#D3D4DE" }}>
                 <div
                   style={{
@@ -143,7 +143,8 @@ const imageStyle = {
   height: "336px",
   width: "336px",
   objectFit: "cover",
-  margin: "22.5px 24px"
+  margin: "22.5px 24px",
+  backgroundColor: "white"
 };
 
 const modalStyle = {
