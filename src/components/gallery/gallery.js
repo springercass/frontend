@@ -8,6 +8,8 @@ import {
   Icon
 } from "semantic-ui-react";
 import axios from "axios";
+import NavLoggedIn from '../nav/navLoggedIn';
+import Nav from '../nav/nav';
 
 function Gallery() {
   const [images, setImages] = useState([]);
@@ -54,6 +56,8 @@ function Gallery() {
 
   return (
     <Container fluid>
+      {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
+
       <Header
         textAlign="center"
         as="h1"
