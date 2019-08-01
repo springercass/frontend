@@ -16,7 +16,7 @@ function Gallery() {
   const [activePage, setActivePage] = useState(1);
   const [activeImages, setActiveImages] = useState([]);
 
-  //   Function for returning slices of array, based on number of images per page (n), and which page we're on (page).
+     //   Function for returning slices of array, based on number of images per page (n), and which page we're on (page).
   function paginate(array, n, page) {
     if (page === 1) {
       return array.slice(0, n);
@@ -45,15 +45,17 @@ function Gallery() {
 
   useEffect(() => {
     axios.get("https://art-portfolio-be.herokuapp.com/api/posts").then(data => {
-      // console.log(data);
+      console.log(data);
       setImages(data.data);
       setActiveImages(paginate(data.data, 9, activePage));
+      
     });
   }, []);
 
   useEffect(() => {
     setActiveImages(paginate(images, 9, activePage));
   }, [activePage]);
+
 
   return (
     <Container fluid>

@@ -10,8 +10,7 @@ const EditProfileContainer = styled.div`
     background-color: #D3D4DE;
     display: flex;
     box-shadow: 0px 2.5px 5px 0px rgba(184,185,189,1);
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin: 60px auto 60px auto;
 `
 
 const LeftSection = styled.div`
@@ -128,6 +127,20 @@ const EditProfile = (props) => {
     const userID = localStorage.getItem("userID")
     const token = localStorage.getItem("token")
 
+    const [imageUrlState, setUrlState] = useState('')
+
+    useEffect(() => {
+        axios
+            .get(`https://art-portfolio-be.herokuapp.com/api/users/${userID}`)
+            .then(response => {
+                console.log('made api call', response)
+                setUrlState(response.data.profilePhoto)
+            })
+            .catch( err => {
+                console.log('axios error making profile url call')
+            })
+    }, [])
+
     const submitHandler = (event) => {
         event.preventDefault()
 
@@ -164,7 +177,7 @@ const EditProfile = (props) => {
             <LeftSection>
                 <StyledH1>Profile</StyledH1>
                 <UserImageContainer>
-                    <UserImage src= "https://avatars1.githubusercontent.com/u/48461758?s=460&v=4" />
+                    <UserImage src= {imageUrlState} />
                 </UserImageContainer>
                 <UploadPhotoButton>UPLOAD PHOTO</UploadPhotoButton>
             </LeftSection>
