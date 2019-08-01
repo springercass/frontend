@@ -20,7 +20,7 @@ function App() {
         {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
         {/* <Gallery /> */}
 
-        <Route exact path='/' component={OwnUserInfoCard} />
+        <Route exact path='/' component={Gallery} />
         <Route path='/login' component={Login} />
         <Route path='/createacc' component={CreateAcc} />
         {/* <Route path='/otheruserinfo' component={OtherUserInfoCard} /> */}

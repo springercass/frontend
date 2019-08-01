@@ -5,7 +5,6 @@ import axios from 'axios'
 const SizedContainer = styled.div`
     height: 750px;
     width: 652px;
-    // box-shadow: 0px 2.5px 5px 0px rgba(184,185,189,1);
 `
 
 const UploadPhotoCont = styled.div`
@@ -18,20 +17,21 @@ const UploadPhotoCont = styled.div`
     align-items: center;
 `
 
-const FormInput = styled.input`
+const UrlInput = styled.input`
     margin-top: 5px;
-    width: 90%;
+    width: 60%;
     height: 55px;
     border: 2px solid #777798;
     border-radius: 5px;
     margin-bottom: 20px;
     font-size: 1.1rem;
+    text-align: center;
     padding-left: 2.5%;
     padding-right: 2.5%;
 `
 
 const UploadPhotoButton = styled.button`
-    width: 377px;
+    width: 196px;
     height: 73px;
     background-color: white;
     color: #000639;
@@ -72,7 +72,6 @@ const PostDescriptionInput = styled.textarea`
 
 const SavePostButton = styled.button`
     width: 30%;
-    // margin-left: 5%;
     height: 73px;
     background-color: #176EBB;
     color: white;
@@ -90,7 +89,7 @@ const SavePostButton = styled.button`
 const NewPost = (props) => {
 
     const [urlState, setUrlState] = useState('')
-    // const [urlState, setUrlState] = useState('https://picsum.photos/id/879/1000')
+    // https://picsum.photos/id/879/1000
     const [buttonState, setButtonState] = useState('SAVE')
     const [formState, setFormState] = useState({
         url: '',
@@ -105,7 +104,7 @@ const NewPost = (props) => {
     }
 
     const uploadHandler = (event) => {
-        
+
         const expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
         const regex = new RegExp(expression);
         const urlCheck = formState.url;
@@ -138,6 +137,8 @@ const NewPost = (props) => {
                 .catch( err => {
                     console.log('axios error creating new post')
                 })
+        } else {
+            alert("No photo uploaded");
         }
     }
 
@@ -148,7 +149,7 @@ const NewPost = (props) => {
 
         <SizedContainer>
             <UploadPhotoCont style={{backgroundImage: `url(${urlState})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
-                <FormInput 
+                <UrlInput 
                     name="url"
                     placeholder='Enter image url'
                     value={formState.url}
@@ -165,7 +166,7 @@ const NewPost = (props) => {
                 />
                 <SavePostButton onClick={savePostHandler}>{buttonState}</SavePostButton>
             </DescriptionContainer>
-        </SizedContainer>  
+        </SizedContainer>
     )
 }
   
