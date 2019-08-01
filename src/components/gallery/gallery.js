@@ -16,7 +16,7 @@ function Gallery() {
   const [activePage, setActivePage] = useState(1);
   const [activeImages, setActiveImages] = useState([]);
 
-    //   Function for returning slices of array, based on number of images per page (n), and which page we're on (page).
+     //   Function for returning slices of array, based on number of images per page (n), and which page we're on (page).
   function paginate(array, n, page) {
     if (page === 1) {
       return array.slice(0, n);
@@ -48,13 +48,13 @@ function Gallery() {
       console.log(data);
       setImages(data.data);
       setActiveImages(paginate(data.data, 9, activePage));
-      setButtonState('UPDATE DESCRIPTION')
+      
     });
-  }, [buttonState]);
+  }, []);
 
   useEffect(() => {
     setActiveImages(paginate(images, 9, activePage));
-  }, [activePage, buttonState]);
+  }, [activePage]);
 
 
   return (

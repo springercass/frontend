@@ -9,10 +9,106 @@ import {
 } from "semantic-ui-react";
 import axios from "axios";
 
+// nested modal start 
+
+import styled from 'styled-components'
+
+const StyledEditDescriptionButton = styled.button`
+    width: 80px;
+    height: 24px;
+    color: #6E7ACB;
+    border: 2px solid #6E7ACB;
+    background-color: #F4F5FA;
+    margin-top: 10px;
+`
+
+const PostDescriptionInput = styled.textarea`
+    width: 60%;
+    height: 73px;
+    border-radius: 5px;
+    border: none;
+    background-color: #D3D4DF;
+    color: #000639;
+    font-size: 1.1rem;
+    padding: 2.5%;
+    resize: none;
+    line-height: 1.2;
+`
+
+const DescriptionContainer = styled.div`
+    height: 134px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #F4F5FA
+`
+
+const SavePostButton = styled.button`
+    width: 30%;
+    height: 73px;
+    background-color: #176EBB;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+
+    :hover {
+        color: #176EBB;
+        background-color: white;
+        border: 2px solid #176EBB;
+    }
+`
+
+// nested modal end
+
 function UserGallery(props) {
   const [images, setImages] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [activeImages, setActiveImages] = useState([]);
+
+   // nested modual start
+
+   const [buttonState, setButtonState] = useState('UPDATE DESCRIPTION')
+   const [descriptionState, setDescriptionState] = useState({
+     description: ''
+   })
+ 
+   const [postIdState, setPostIdState] = useState('')
+ 
+   const token = localStorage.getItem("token")
+   
+       // need to confirm button disply state, write ternary operator to control state ('none' or 'block') depending on if user is logged in
+   const [buttonDisplayState, setButtonDisplayState] = useState('block')
+ 
+   const handleChanges = event => {
+     setDescriptionState({ ...descriptionState, description: event.target.value})
+     // setPostIdState()
+     console.log('event target id', event.target.id)
+     console.log(descriptionState)
+     setPostIdState(event.target.name)
+   }
+ 
+   const editDescriptionHandler = (event) => {
+     event.preventDefault()
+     
+       axios
+         .put(`https://art-portfolio-be.herokuapp.com/api/posts/${postIdState}`, descriptionState, {
+             headers: {Authorization: token}
+         })
+         .then(response => {
+             console.log('made api put to update description', response)
+             setDescriptionState({
+                 description: ''
+             })
+             setButtonState('UPDATED')
+         })
+         .catch( err => {
+             console.log('axios error editing description')
+         })
+   }
+ 
+   // nested modal end
 
   //   Function for returning slices of array, based on number of images per page (n), and which page we're on (page).
   function paginate(array, n, page) {
@@ -46,12 +142,13 @@ function UserGallery(props) {
       console.log(data.data);
       setImages(data.data);
       setActiveImages(paginate(data.data, 9, activePage));
+      setButtonState('UPDATE DESCRIPTION')
     });
-  }, []);
+  }, [buttonState]);
 
   useEffect(() => {
     setActiveImages(paginate(images, 9, activePage));
-  }, [activePage]);
+  }, [activePage, buttonState]);
 
   return (
     <Container fluid>
@@ -97,6 +194,27 @@ function UserGallery(props) {
                 <Modal.Description>
                   <p style={{ color: "black" }}>{image.description}</p>
                 </Modal.Description>
+
+                    {/* Nested Modal Start */}
+                
+                    <Modal 
+                      // button can be displayed/not depending on if user is logged in - need to write ternary operator, and state hook for 'buttonDisplayState' or alternative solution needed
+                      trigger={<StyledEditDescriptionButton style={{display: `${buttonDisplayState}`}}>Edit</StyledEditDescriptionButton>}
+                        content={
+                                  <DescriptionContainer>
+                                    <PostDescriptionInput 
+                                        id={image.id}
+                                        placeholder={image.description}
+                                        value={descriptionState.description}
+                                        onChange={handleChanges}
+                                    />
+                                    <SavePostButton onClick={editDescriptionHandler}>{buttonState}</SavePostButton>
+                                  </DescriptionContainer>
+                        }
+                    />
+
+                   {/* Nested Modal End */}
+
               </Modal.Content>
             </Modal>
           </div>

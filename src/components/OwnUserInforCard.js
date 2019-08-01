@@ -3,6 +3,7 @@ import React from 'react'
 import { Container, Header, Image, Button, Icon, Modal } from 'semantic-ui-react'
 import styled from 'styled-components'
 import NewPost from './NewPost'
+import { Link } from 'react-router-dom'
 
 const UserInfoContainer = styled.div`
     width: 1291px;
@@ -141,7 +142,7 @@ const OwnUserInfoCard = (props) => (
                 <StyledBio>{props.bio}</StyledBio>
             </RightLeftHalfCont>
             <RightRightHalfCont>
-                <EditProfileButton>Edit Profile</EditProfileButton>
+                <Link to="/editprofile"><EditProfileButton >Edit Profile</EditProfileButton></Link>
                 <Modal trigger={<NewPostButton>New Post</NewPostButton>} closeIcon={{ style: { top: '30px', right: '50px' }, name: 'close' }} basic size='small' >
                     <Modal.Content >
                         <NewPost />
