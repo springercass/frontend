@@ -1,6 +1,8 @@
 import React from 'react'
-import { Container, Header, Image } from 'semantic-ui-react'
+// import { Container, Header, Image } from 'semantic-ui-react'
+import { Container, Header, Image, Button, Icon, Modal } from 'semantic-ui-react'
 import styled from 'styled-components'
+import NewPost from './NewPost'
 
 const UserInfoContainer = styled.div`
     width: 1291px;
@@ -116,7 +118,12 @@ const RightLeftHalfCont = styled.div`
 
 const RightRightHalfCont = styled.div`
     width: 40%;
-    
+`
+
+const StyledModalContainer = styled.div`
+    height: 870px;
+    width: 821px;
+    background-color: #777798;
 `
 
 const OwnUserInfoCard = (props) => (
@@ -133,7 +140,11 @@ const OwnUserInfoCard = (props) => (
             </RightLeftHalfCont>
             <RightRightHalfCont>
                 <EditProfileButton>Edit Profile</EditProfileButton>
-                <NewPostButton>New Post</NewPostButton>
+                <Modal trigger={<NewPostButton>New Post</NewPostButton>} closeIcon={{ style: { top: '30px', right: '50px' }, name: 'close' }} basic size='small' >
+                    <Modal.Content >
+                        <NewPost />
+                    </Modal.Content>
+                </Modal>
             </RightRightHalfCont>
         </RightContainer>
    </UserInfoContainer>

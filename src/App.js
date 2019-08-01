@@ -10,6 +10,8 @@ import CreateAcc from './components/createacc/createacc'
 import EditProfile from './components/EditProfile'
 import OtherUserInfoCard from './components/OtherUserInfoCard'
 import OwnUserInfoCard from './components/OwnUserInforCard'
+import NewPost from './components/NewPost'
+
 
 function App() {
   return (
@@ -18,14 +20,13 @@ function App() {
         {localStorage.getItem('token') ? <NavLoggedIn /> : <Nav />}
         {/* <Gallery /> */}
 
-        <Route exact path='/' component={Gallery} />
+        <Route exact path='/' component={OwnUserInfoCard} />
         <Route path='/login' component={Login} />
         <Route path='/createacc' component={CreateAcc} />
         {/* <Route path='/otheruserinfo' component={OtherUserInfoCard} /> */}
         <PrivateRoute path='/editprofile' component={EditProfile} />
         {/* <PrivateRoute path='/ownuserinfo' component={OwnUserInfoCard} /> */}
         
-      
       </div>
     </Router>
   );
