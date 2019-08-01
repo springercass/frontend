@@ -74,23 +74,26 @@ function Gallery() {
     description: ''
   })
 
+  const [postIdState, setPostIdState] = useState('')
+
   const token = localStorage.getItem("token")
   
-      // need to confirm postID variable
-  const postID = 1
       // need to confirm button disply state, write ternary operator to control state ('none' or 'block') depending on if user is logged in
   const [buttonDisplayState, setButtonDisplayState] = useState('block')
 
   const handleChanges = event => {
-    setDescriptionState({ ...descriptionState, [event.target.name]: event.target.value})
+    setDescriptionState({ ...descriptionState, description: event.target.value})
+    // setPostIdState()
+    console.log(event.target.name)
+    console.log(descriptionState)
+    setPostIdState(event.target.name)
   }
 
   const editDescriptionHandler = (event) => {
     event.preventDefault()
     
       axios
-        // need to confirm postID variable
-        .put(`https://art-portfolio-be.herokuapp.com/api/posts/${postID}`, descriptionState, {
+        .put(`https://art-portfolio-be.herokuapp.com/api/posts/${postIdState}`, descriptionState, {
             headers: {Authorization: token}
         })
         .then(response => {
@@ -135,7 +138,7 @@ function Gallery() {
 
   useEffect(() => {
     axios.get("https://art-portfolio-be.herokuapp.com/api/posts").then(data => {
-      // console.log(data);
+      console.log(data);
       setImages(data.data);
       setActiveImages(paginate(data.data, 9, activePage));
       setButtonState('UPDATE DESCRIPTION')
@@ -145,6 +148,7 @@ function Gallery() {
   useEffect(() => {
     setActiveImages(paginate(images, 9, activePage));
   }, [activePage, buttonState]);
+
 
   return (
     <Container fluid>
@@ -211,7 +215,7 @@ function Gallery() {
                     content={
                               <DescriptionContainer>
                                 <PostDescriptionInput 
-                                    name="description"
+                                    name={image.id}
                                     placeholder={image.description}
                                     value={descriptionState.description}
                                     onChange={handleChanges}
