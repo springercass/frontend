@@ -133,6 +133,7 @@ const NewPost = (props) => {
                         description: ''
                     })
                     setButtonState('POST CREATED')
+                    setUrlState('')
                 })
                 .catch( err => {
                     console.log('axios error creating new post')
