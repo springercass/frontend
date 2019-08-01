@@ -55,13 +55,6 @@ function UserGallery(props) {
 
   return (
     <Container fluid>
-      <Header
-        textAlign="center"
-        as="h1"
-        style={headerStyle}
-      >
-        Gallery
-      </Header>
       <Container style={galleryContainer}>
         {activeImages.map(image => (
           <div>

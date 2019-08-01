@@ -134,7 +134,8 @@ const galleryContainer = {
 const headerStyle = { 
     fontSize: "48px", 
     lineHeigh: "58px", 
-    marginTop: "44px" 
+    marginTop: "44px",
+    backgroundColor: "#E5E5E5"
 }
 
 const imageStyle = {

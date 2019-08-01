@@ -8,6 +8,8 @@ const UserInfoContainer = styled.div`
     border-bottom: 2px solid #777798;
     display: flex;
     margin-bottom: 60px;
+    margin: 0px auto 60px auto;
+    background-color: #E5E5E5;
 `
 
 const UserImage = styled.img`
