@@ -10,7 +10,7 @@ const UserInfoContainer = styled.div`
     height: 393px;
     border-bottom: 2px solid #777798;
     display: flex;
-    margin-bottom: 60px;
+    // margin-bottom: 60px;
     margin: 0px auto 60px auto;
     background-color: #E5E5E5;
 `

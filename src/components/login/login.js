@@ -73,7 +73,7 @@ function Login(props) {
                     </Form.Field>
                     <Form.Field>
                         <label>Password</label>
-                        <input name='password' onChange={handleChanges} value={user.password} />
+                        <input type="password" name='password' onChange={handleChanges} value={user.password} />
                     </Form.Field>
                     <Button className="form-button" type='submit'>Explore</Button>
                 </Form>

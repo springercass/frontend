@@ -75,16 +75,30 @@ function UserGallery(props) {
    })
  
    const [postIdState, setPostIdState] = useState('')
- 
+   const [loggedInUser, setLoggedInUser] = useState('');
+
    const token = localStorage.getItem("token")
-   
+   const userID = localStorage.getItem("userID");
+
+   useEffect(() => {
+      axios
+        .get(`https://art-portfolio-be.herokuapp.com/api/users/${userID}`)
+        .then(res => {
+          console.log('axios get user logged in', res.data)
+          setLoggedInUser(res.data.username)
+        })
+        .catch(err => console.log(err))
+   },[])
+
+
+
        // need to confirm button disply state, write ternary operator to control state ('none' or 'block') depending on if user is logged in
-   const [buttonDisplayState, setButtonDisplayState] = useState('block')
- 
+  //  const [buttonDisplayState, setButtonDisplayState] = useState('')
+   let buttonDisplayState = '';
    const handleChanges = event => {
      setDescriptionState({ ...descriptionState, description: event.target.value})
      // setPostIdState()
-     console.log(event.target.name)
+     console.log('event target name', event.target.name)
      console.log(descriptionState)
      setPostIdState(event.target.name)
    }
@@ -198,7 +212,9 @@ function UserGallery(props) {
                 </Modal.Description>
 
                     {/* Nested Modal Start */}
-                
+                      
+                    <span style={{color: "#d3d4dd" }}>{loggedInUser === image.username ? buttonDisplayState = "block" : buttonDisplayState = "none" }</span>
+                    {/* {console.log('BUTTON DISPLAY STATE', buttonDisplayState)} */}
                     <Modal 
                       // button can be displayed/not depending on if user is logged in - need to write ternary operator, and state hook for 'buttonDisplayState' or alternative solution needed
                       trigger={<StyledEditDescriptionButton style={{display: `${buttonDisplayState}`}}>Edit</StyledEditDescriptionButton>}
