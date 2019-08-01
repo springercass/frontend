@@ -63,12 +63,13 @@ const SavePostButton = styled.button`
 // nested modal end
 
 function UserGallery(props) {
+  console.log('user gallery props', props)
   const [images, setImages] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [activeImages, setActiveImages] = useState([]);
 
    // nested modual start
-
+   
    const [buttonState, setButtonState] = useState('UPDATE DESCRIPTION')
    const [descriptionState, setDescriptionState] = useState({
      description: ''

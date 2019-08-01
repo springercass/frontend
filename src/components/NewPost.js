@@ -87,7 +87,7 @@ const SavePostButton = styled.button`
 `
 
 const NewPost = (props) => {
-
+    
     const [urlState, setUrlState] = useState('')
     // https://picsum.photos/id/879/1000
     const [buttonState, setButtonState] = useState('SAVE')

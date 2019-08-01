@@ -130,7 +130,9 @@ const StyledModalContainer = styled.div`
 `
 
 const OwnUserInfoCard = (props) => (
+    
    <UserInfoContainer>
+       {console.log('ownuserinfocardprops:', props)}
         <LeftContainer>
             <UserImage src={props.profilePhoto}/>
         </LeftContainer>
