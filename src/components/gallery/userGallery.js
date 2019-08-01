@@ -84,7 +84,7 @@ function UserGallery(props) {
    const handleChanges = event => {
      setDescriptionState({ ...descriptionState, description: event.target.value})
      // setPostIdState()
-     console.log('event target id', event.target.id)
+     console.log(event.target.name)
      console.log(descriptionState)
      setPostIdState(event.target.name)
    }
@@ -154,7 +154,9 @@ function UserGallery(props) {
     <Container fluid>
       <Container style={galleryContainer}>
         {activeImages.map(image => (
+          
           <div>
+            {console.log(image)}
             <Modal
               basic
               size="large"
@@ -203,7 +205,7 @@ function UserGallery(props) {
                         content={
                                   <DescriptionContainer>
                                     <PostDescriptionInput 
-                                        id={image.id}
+                                        name={image.id}
                                         placeholder={image.description}
                                         value={descriptionState.description}
                                         onChange={handleChanges}
