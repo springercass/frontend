@@ -108,12 +108,12 @@ function Gallery() {
                         .slice(10, 15)}
                   </Header>
                 </div>
-<div style={{display:'flex', justifyContent:'space-between'}}>
+                <div style={{display:'flex', justifyContent:'space-between'}}>
                     <Modal.Description>
                       <p style={{ color: "black" }}>{image.description}</p>
                     </Modal.Description>
                     <UpvoteButton image={image}/>
-</div>
+                </div>
               </Modal.Content>
             </Modal>
           </div>

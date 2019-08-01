@@ -8,6 +8,7 @@ import {
   Icon
 } from "semantic-ui-react";
 import axios from "axios";
+import UpvoteButton from './upvoteButton';
 
 // nested modal start 
 
@@ -155,10 +156,10 @@ function UserGallery(props) {
     axios.get(`https://art-portfolio-be.herokuapp.com/api/users/${props.id}/posts`).then(data => {
       console.log(data.data);
       setImages(data.data);
-      setActiveImages(paginate(data.data, 9, activePage));
+      setActiveImages(paginate(data.data.reverse(), 9, activePage));
       setButtonState('UPDATE DESCRIPTION')
     });
-  }, [buttonState]);
+  }, [buttonState, props.newPost]);
 
   useEffect(() => {
     setActiveImages(paginate(images, 9, activePage));
@@ -205,10 +206,12 @@ function UserGallery(props) {
                         .slice(10, 15)}
                   </Header>
                 </div>
+                <div style={{display:'flex', justifyContent:'space-between'}}>
                 <Modal.Description>
                   <p style={{ color: "black" }}>{image.description}</p>
                 </Modal.Description>
-
+                <UpvoteButton image={image}/>
+                </div>
                     {/* Nested Modal Start */}
                       
                     <span style={{color: "#d3d4dd" }}>{loggedInUser === image.username ? buttonDisplayState = "block" : buttonDisplayState = "none" }</span>
