@@ -177,7 +177,7 @@ function UserGallery(props) {
               style={modalStyle}
               trigger={<Image style={imageStyle} src={image.url} />}
             >
-              <Image style={{ margin: "0px 0px", backgroundColor: "white"}} src={image.url} />
+              <Image style={{ margin: "0px 0px",  width: "100%", backgroundColor: "white"}} src={image.url} />
               <Modal.Content style={{ backgroundColor: "#D3D4DE" }}>
                 <div
                   style={{
