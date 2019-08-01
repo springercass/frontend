@@ -129,7 +129,7 @@ const OtherUserInfoCard = (props) => (
             <RightLeftHalfCont>
                 <StyledUsername>{props.username}</StyledUsername>
                 <StyledName>{props.firstName}{' '}{props.lastName}</StyledName>
-                {/* <StyledEmail>monique@soto.com</StyledEmail> */}
+                <StyledEmail>{props.email}</StyledEmail>
                 <StyledBio>{props.bio}</StyledBio>
             </RightLeftHalfCont>
             <RightRightHalfCont>

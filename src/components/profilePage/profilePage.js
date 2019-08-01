@@ -35,6 +35,7 @@ function ProfilePage(props) {
               lastName={user.last_name}
               bio={user.bio}
               profilePhoto={user.profilePhoto}
+              email={user.email}
             />
          
           <UserGallery id={id} />
@@ -52,6 +53,7 @@ function ProfilePage(props) {
               lastName={user.last_name}
               bio={user.bio}
               profilePhoto={user.profilePhoto}
+              email={user.email}
             />
           
           <UserGallery id={id} />
@@ -90,7 +92,7 @@ function ProfilePage(props) {
 const center = {
   display: "flex",
   flexDirection: "column",
-  alignContent: "center",
+//   alignContent: "center",
   backgroundColor: "#E5E5E5"
 };
 
