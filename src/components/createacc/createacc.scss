@@ -15,6 +15,7 @@
             font-size: 48px;
             font-weight: bold;
             text-align: center;
+            margin-top: 40px;
         }
 
         
@@ -55,4 +56,24 @@
 
 
     
+}
+
+.gallery-container {
+    width: 50%;
+    margin-top: 54px;
+    height: 795;
+}
+
+.gallery-preview {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.ui.image.gallery-image {
+            width: 220px;
+            height: 220px;
+            margin: 10px;
 }
