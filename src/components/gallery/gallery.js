@@ -125,11 +125,11 @@ function Gallery() {
       <div
         style={buttonsStyle}
       >
-        <Button compact onClick={handlePageChangeLeft}>
+        <Button compact style={{backgroundColor:"#D3D4DE"}} onClick={handlePageChangeLeft}>
           <Icon name="chevron left" />
         </Button>
         <div style={{ padding: "0px 20px" }}>{activePage}</div>
-        <Button compact onClick={handlePageChangeRight}>
+        <Button compact style={{backgroundColor:"#D3D4DE"}} onClick={handlePageChangeRight}>
           <Icon name="chevron right" />
         </Button>
       </div>
@@ -182,7 +182,8 @@ const dateStyle = {
 const buttonsStyle = {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    padding: "20px 0px"
 }
 
 export default Gallery;

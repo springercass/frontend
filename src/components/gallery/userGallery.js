@@ -69,6 +69,10 @@ function UserGallery(props) {
   const [activePage, setActivePage] = useState(1);
   const [activeImages, setActiveImages] = useState([]);
 
+//   states for edit and deletion
+  const [edited, setEdited] = useState(false);
+  const [deleted, setDeleted] = useState(false);
+
    // nested modual start
 
    const [buttonState, setButtonState] = useState('UPDATE DESCRIPTION')
@@ -117,6 +121,7 @@ function UserGallery(props) {
              setDescriptionState({
                  description: ''
              })
+             setEdited(!edited)
              setButtonState('UPDATED')
          })
          .catch( err => {
@@ -125,12 +130,18 @@ function UserGallery(props) {
    }
  
    const handleDelete = id => {
-     axios
-      .delete(`https://art-portfolio-be.herokuapp.com/api/posts/${id}`, {
-        headers: {Authorization: token}
-      })
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+    if (window.confirm('Are you sure you wish to delete this item?')) {
+        axios
+         .delete(`https://art-portfolio-be.herokuapp.com/api/posts/${id}`, {
+           headers: {Authorization: token}
+         })
+         .then(res => {
+             console.log(res)
+             setDeleted(!deleted);
+            //  console.log('deleted', deleted)
+         })
+         .catch(err => console.log(err))
+    }
    }
    // nested modal end
 
@@ -168,7 +179,7 @@ function UserGallery(props) {
       setActiveImages(paginate(data.data.reverse(), 9, activePage));
       setButtonState('UPDATE DESCRIPTION')
     });
-  }, [buttonState, props.id]);
+  }, [buttonState, props.id, deleted, edited]);
 
   useEffect(() => {
     setActiveImages(paginate(images, 9, activePage));
@@ -220,30 +231,33 @@ function UserGallery(props) {
                 <Modal.Description>
                   <p style={{ color: "black" }}>{image.description}</p>
                 </Modal.Description>
-                <StyledEditDescriptionButton onClick={() => handleDelete(image.id)}>Delete</StyledEditDescriptionButton>
                 <UpvoteButton image={image}/>
-                </div>
-                    {/* Nested Modal Start */}
-                      
-                    <span style={{color: "#d3d4dd" }}>{loggedInUser === image.username ? buttonDisplayState = "block" : buttonDisplayState = "none" }</span>
-                    {/* {console.log('BUTTON DISPLAY STATE', buttonDisplayState)} */}
-                    <Modal 
-                      // button can be displayed/not depending on if user is logged in - need to write ternary operator, and state hook for 'buttonDisplayState' or alternative solution needed
-                      trigger={<StyledEditDescriptionButton style={{display: `${buttonDisplayState}`}}>Edit</StyledEditDescriptionButton>}
-                        content={
-                                  <DescriptionContainer>
-                                    <PostDescriptionInput 
-                                        name={image.id}
-                                        placeholder={image.description}
-                                        value={descriptionState.description}
-                                        onChange={handleChanges}
-                                    />
-                                    <SavePostButton onClick={editDescriptionHandler}>{buttonState}</SavePostButton>
-                                  </DescriptionContainer>
-                        }
-                    />
-
-                   {/* Nested Modal End */}
+                    </div>
+                    <div style={{display:"flex"}}>
+                        <StyledEditDescriptionButton onClick={() => handleDelete(image.id)}>Delete</StyledEditDescriptionButton>
+                            
+                            {/* Nested Modal Start */}
+                              
+                            <span style={{color: "#d3d4dd" }}>{loggedInUser === image.username ? buttonDisplayState = "block" : buttonDisplayState = "none" }</span>
+                            {/* {console.log('BUTTON DISPLAY STATE', buttonDisplayState)} */}
+                            <Modal 
+                              // button can be displayed/not depending on if user is logged in - need to write ternary operator, and state hook for 'buttonDisplayState' or alternative solution needed
+                              trigger={<StyledEditDescriptionButton style={{display: `${buttonDisplayState}`}}>Edit</StyledEditDescriptionButton>}
+                                content={
+                                          <DescriptionContainer>
+                                            <PostDescriptionInput 
+                                                name={image.id}
+                                                placeholder={image.description}
+                                                value={descriptionState.description}
+                                                onChange={handleChanges}
+                                            />
+                                            <SavePostButton onClick={editDescriptionHandler}>{buttonState}</SavePostButton>
+                                          </DescriptionContainer>
+                                }
+                            />
+        
+                           {/* Nested Modal End */}
+                    </div>
 
               </Modal.Content>
             </Modal>
@@ -253,11 +267,11 @@ function UserGallery(props) {
       <div
         style={buttonsStyle}
       >
-        <Button compact onClick={handlePageChangeLeft}>
+        <Button compact style={{backgroundColor:"#D3D4DE"}} onClick={handlePageChangeLeft}>
           <Icon name="chevron left" />
         </Button>
         <div style={{ padding: "0px 20px" }}>{activePage}</div>
-        <Button compact onClick={handlePageChangeRight}>
+        <Button compact style={{backgroundColor:"#D3D4DE"}} onClick={handlePageChangeRight}>
           <Icon name="chevron right" />
         </Button>
       </div>
@@ -309,7 +323,8 @@ const dateStyle = {
 const buttonsStyle = {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    padding: "20px 0px"
 }
 
 export default UserGallery;

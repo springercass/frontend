@@ -27,7 +27,7 @@ function ProfilePage(props) {
         setCurrentId(id);
       });
 
-  }, []);
+  }, [id]);
 
   if (loggedInUserID === currentId){
       return (
