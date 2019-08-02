@@ -9,6 +9,7 @@ import EditProfile from './components/EditProfile'
 import OtherUserInfoCard from './components/OtherUserInfoCard'
 import OwnUserInfoCard from './components/OwnUserInforCard'
 import ProfilePage from './components/profilePage/profilePage';
+import Footer from './components/footer/footer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path='/createacc' component={CreateAcc} />
         <PrivateRoute exact path='/editprofile' component={EditProfile} />
         <Route exact path='/users/:id' render={props=><ProfilePage {...props}/>}/>
+      <Footer />
       </div>
     </Router>
   );

@@ -69,6 +69,10 @@ function UserGallery(props) {
   const [activePage, setActivePage] = useState(1);
   const [activeImages, setActiveImages] = useState([]);
 
+//   states for edit and deletion
+  const [edited, setEdited] = useState(false);
+  const [deleted, setDeleted] = useState(false);
+
    // nested modual start
 
    const [buttonState, setButtonState] = useState('UPDATE DESCRIPTION')
@@ -117,6 +121,7 @@ function UserGallery(props) {
              setDescriptionState({
                  description: ''
              })
+             setEdited(!edited)
              setButtonState('UPDATED')
          })
          .catch( err => {
@@ -130,7 +135,11 @@ function UserGallery(props) {
          .delete(`https://art-portfolio-be.herokuapp.com/api/posts/${id}`, {
            headers: {Authorization: token}
          })
-         .then(res => console.log(res))
+         .then(res => {
+             console.log(res)
+             setDeleted(!deleted);
+            //  console.log('deleted', deleted)
+         })
          .catch(err => console.log(err))
     }
    }
@@ -170,7 +179,7 @@ function UserGallery(props) {
       setActiveImages(paginate(data.data.reverse(), 9, activePage));
       setButtonState('UPDATE DESCRIPTION')
     });
-  }, [buttonState, props.id]);
+  }, [buttonState, props.id, deleted, edited]);
 
   useEffect(() => {
     setActiveImages(paginate(images, 9, activePage));
@@ -258,11 +267,11 @@ function UserGallery(props) {
       <div
         style={buttonsStyle}
       >
-        <Button compact onClick={handlePageChangeLeft}>
+        <Button compact style={{backgroundColor:"#D3D4DE"}} onClick={handlePageChangeLeft}>
           <Icon name="chevron left" />
         </Button>
         <div style={{ padding: "0px 20px" }}>{activePage}</div>
-        <Button compact onClick={handlePageChangeRight}>
+        <Button compact style={{backgroundColor:"#D3D4DE"}} onClick={handlePageChangeRight}>
           <Icon name="chevron right" />
         </Button>
       </div>
@@ -314,7 +323,8 @@ const dateStyle = {
 const buttonsStyle = {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    padding: "20px 0px"
 }
 
 export default UserGallery;
