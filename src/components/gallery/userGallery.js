@@ -124,6 +124,14 @@ function UserGallery(props) {
          })
    }
  
+   const handleDelete = id => {
+     axios
+      .delete(`https://art-portfolio-be.herokuapp.com/api/posts/${id}`, {
+        headers: {Authorization: token}
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+   }
    // nested modal end
 
   //   Function for returning slices of array, based on number of images per page (n), and which page we're on (page).
@@ -212,6 +220,7 @@ function UserGallery(props) {
                 <Modal.Description>
                   <p style={{ color: "black" }}>{image.description}</p>
                 </Modal.Description>
+                <StyledEditDescriptionButton onClick={() => handleDelete(image.id)}>Delete</StyledEditDescriptionButton>
                 <UpvoteButton image={image}/>
                 </div>
                     {/* Nested Modal Start */}
