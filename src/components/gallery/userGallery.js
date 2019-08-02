@@ -125,12 +125,14 @@ function UserGallery(props) {
    }
  
    const handleDelete = id => {
-     axios
-      .delete(`https://art-portfolio-be.herokuapp.com/api/posts/${id}`, {
-        headers: {Authorization: token}
-      })
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+    if (window.confirm('Are you sure you wish to delete this item?')) {
+        axios
+         .delete(`https://art-portfolio-be.herokuapp.com/api/posts/${id}`, {
+           headers: {Authorization: token}
+         })
+         .then(res => console.log(res))
+         .catch(err => console.log(err))
+    }
    }
    // nested modal end
 
@@ -220,30 +222,33 @@ function UserGallery(props) {
                 <Modal.Description>
                   <p style={{ color: "black" }}>{image.description}</p>
                 </Modal.Description>
-                <StyledEditDescriptionButton onClick={() => handleDelete(image.id)}>Delete</StyledEditDescriptionButton>
                 <UpvoteButton image={image}/>
-                </div>
-                    {/* Nested Modal Start */}
-                      
-                    <span style={{color: "#d3d4dd" }}>{loggedInUser === image.username ? buttonDisplayState = "block" : buttonDisplayState = "none" }</span>
-                    {/* {console.log('BUTTON DISPLAY STATE', buttonDisplayState)} */}
-                    <Modal 
-                      // button can be displayed/not depending on if user is logged in - need to write ternary operator, and state hook for 'buttonDisplayState' or alternative solution needed
-                      trigger={<StyledEditDescriptionButton style={{display: `${buttonDisplayState}`}}>Edit</StyledEditDescriptionButton>}
-                        content={
-                                  <DescriptionContainer>
-                                    <PostDescriptionInput 
-                                        name={image.id}
-                                        placeholder={image.description}
-                                        value={descriptionState.description}
-                                        onChange={handleChanges}
-                                    />
-                                    <SavePostButton onClick={editDescriptionHandler}>{buttonState}</SavePostButton>
-                                  </DescriptionContainer>
-                        }
-                    />
-
-                   {/* Nested Modal End */}
+                    </div>
+                    <div style={{display:"flex"}}>
+                        <StyledEditDescriptionButton onClick={() => handleDelete(image.id)}>Delete</StyledEditDescriptionButton>
+                            
+                            {/* Nested Modal Start */}
+                              
+                            <span style={{color: "#d3d4dd" }}>{loggedInUser === image.username ? buttonDisplayState = "block" : buttonDisplayState = "none" }</span>
+                            {/* {console.log('BUTTON DISPLAY STATE', buttonDisplayState)} */}
+                            <Modal 
+                              // button can be displayed/not depending on if user is logged in - need to write ternary operator, and state hook for 'buttonDisplayState' or alternative solution needed
+                              trigger={<StyledEditDescriptionButton style={{display: `${buttonDisplayState}`}}>Edit</StyledEditDescriptionButton>}
+                                content={
+                                          <DescriptionContainer>
+                                            <PostDescriptionInput 
+                                                name={image.id}
+                                                placeholder={image.description}
+                                                value={descriptionState.description}
+                                                onChange={handleChanges}
+                                            />
+                                            <SavePostButton onClick={editDescriptionHandler}>{buttonState}</SavePostButton>
+                                          </DescriptionContainer>
+                                }
+                            />
+        
+                           {/* Nested Modal End */}
+                    </div>
 
               </Modal.Content>
             </Modal>
