@@ -15,10 +15,10 @@ function App() {
     <Router>
       <div className="App">
         <Route exact path='/' component={Gallery} />
-        <Route path='/login' component={Login} />
-        <Route path='/createacc' component={CreateAcc} />
-        <PrivateRoute path='/editprofile' component={EditProfile} />
-        <Route path='/users/:id' render={props=><ProfilePage {...props}/>}/>
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/createacc' component={CreateAcc} />
+        <PrivateRoute exact path='/editprofile' component={EditProfile} />
+        <Route exact path='/users/:id' render={props=><ProfilePage {...props}/>}/>
       </div>
     </Router>
   );
