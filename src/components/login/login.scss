@@ -1,3 +1,7 @@
+body {
+    background: #e5e5e5;
+}
+
 .login-container {
     width: 1440px;
     margin: auto;
@@ -28,18 +32,29 @@
             Button {
                 text-align: center;
                 width: 376px;
+                border: 2px solid #4454BB;
+                color: #4454BB;
+                background: #F4F5FA;
+                transition: 0.8s;
+                height: 40px;
+
+                &:hover {
+                    background: #4454BB;
+                    color: #F5F4F3;
+                }
             }
         }
     }
 
     
 
-    .ui.form, {
+    .ui.form {
         width: 61.6%;
         margin: auto;
-        
+        box-sizing: border-box;
+
         input {
-            margin-bottom: 38px;
+            margin-bottom: 10px;
         }
         
         label {
@@ -52,7 +67,18 @@
 
         .form-button {
             width: 100%;
-            background: #5c6ac4;
+            background: #4454BB;
+            color: #F5F4F3;
+            transition: 0.8s;
+            height: 40px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+            &:hover {
+                border: 2px solid #4454BB;
+                color: #4454BB;
+                background: #F4F5FA;
+
+            }
         }
     }
 
